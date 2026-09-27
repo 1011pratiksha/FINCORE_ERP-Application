@@ -11,8 +11,6 @@ namespace FINCORE_ERP_Application.Data
             : base(options)
         {
 
-
-
         }
 
         public DbSet<RFQVendor> RFQVendors { get; set; }
@@ -20,13 +18,14 @@ namespace FINCORE_ERP_Application.Data
         public DbSet<Vendor> Vendors { get; set; }
         public DbSet<Quotation> Quotations { get; set; }
         public DbSet<QuotationItem> QuotationItems { get; set; }
-
         public DbSet<VendorSelection> VendorSelections { get; set; }
         public DbSet<PurchaseRequisition> PurchaseRequisitions { get; set; }
         public DbSet<PurchaseRequisitionItem> PurchaseRequisitionItems { get; set; }
-
         public DbSet<VendorCategory> VendorCategories { get; set; }
-
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<APInvoice> APInvoices { get; set; }
+        public DbSet<AccountMaster> AccountMasters { get; set; }
+        public DbSet<JournalEntry> JournalEntries { get; set; }
 
 
     }
