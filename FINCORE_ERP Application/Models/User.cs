@@ -17,7 +17,7 @@ namespace FINCORE_ERP_Application.Models
         public int user_id { get; set; }
 
         [ForeignKey("role_id")]
-        public int role_id { get; set; }
+        public int? role_id { get; set; }
         public Role role { get; set; }
 
         public string full_name { get; set; }
@@ -32,7 +32,7 @@ namespace FINCORE_ERP_Application.Models
 
 
         [ForeignKey("user_id")]
-        public int created_by { get; set; }
+        public int? created_by { get; set; }
          public User user { get; set; }
 
         public DateTime created_at { get; set; }

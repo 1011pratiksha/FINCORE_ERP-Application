@@ -9,11 +9,11 @@ namespace FINCORE_ERP_Application.Models
         public int cost_center_id { get; set; }
 
         [ForeignKey("company_id")]
-        public int company_id { get; set; }
+        public int? company_id { get; set; }
         public Company company { get; set; }
 
         [ForeignKey("department_id")]
-        public int department_id { get; set; }
+        public int? department_id { get; set; }
         public Department department { get; set; }
 
 
@@ -24,7 +24,7 @@ namespace FINCORE_ERP_Application.Models
         public byte is_active { get; set; }
 
         [ForeignKey("user_id")]
-        public int created_by { get; set; }
+        public int? created_by { get; set; }
 
 
         public DateTime created_at { get; set; }

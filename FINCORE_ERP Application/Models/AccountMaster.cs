@@ -33,7 +33,11 @@ namespace FINCORE_ERP_Application.Models
         [ForeignKey("ModifiedByUser")]
         public int? ModifiedBy { get; set; }
         public User ModifiedByUser { get; set; }
-        public List<RevenueEntry> RevenueEntries { get; set; } = new();
+
+        // Navigation Properties
+        public List<RevenueEntry> RevenueEntries { get; set; }
+
+
         public List<JournalEntry> JournalEntries { get; set; } = new();
     }
 }

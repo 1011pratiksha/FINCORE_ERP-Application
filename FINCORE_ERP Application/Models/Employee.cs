@@ -12,19 +12,19 @@ namespace FINCORE_ERP_Application.Models
         public string employee_name { get; set; }
 
         [ForeignKey("user_id")]
-        public int user_id { get; set; }
+        public int? user_id { get; set; }
         public User user { get; set; }
 
         [ForeignKey("department_id")]
-        public int department_id { get; set; }
+        public int? department_id { get; set; }
         public Department department { get; set; }
 
         [ForeignKey("role_id")]
-        public int designation_id { get; set; }
+        public int? designation_id { get; set; }
         public Role designation { get; set; }
 
         [ForeignKey("company_id")]
-        public int company_id { get; set; }
+        public int? company_id { get; set; }
         public Company company { get; set; }
 
         public DateTime? joining_date { get; set; }

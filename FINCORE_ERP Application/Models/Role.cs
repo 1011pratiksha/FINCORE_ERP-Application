@@ -16,7 +16,7 @@ namespace FINCORE_ERP_Application.Models
 
         [ForeignKey("user_id")]
 
-        public int created_by { get; set; }
+        public int? created_by { get; set; }
 
         public DateTime created_at { get; set; }
 
