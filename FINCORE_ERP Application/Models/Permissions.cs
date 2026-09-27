@@ -3,34 +3,30 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FINCORE_ERP_Application.Models
 {
-    public class Permission
+    public class Permissions
     {
         [Key]
-        public int PermissionId { get; set; }
+        public int permission_id { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string PermissionName { get; set; }
+        public string permissioname { get; set; }
 
-        [Required]
         [ForeignKey("Role")]
-        public int RoleId { get; set; }
+        public int role_id { get; set; }
         public Role Role { get; set; }
         public byte is_active { get; set; }
 
-
+        [ForeignKey("user_id")]
         public int created_by { get; set; }
 
         public DateTime created_at { get; set; }
 
         public DateTime? modified_at { get; set; }
-
+        [ForeignKey("user_id")]
         public int? modified_by { get; set; }
 
-        public int role_id { get; set; }
+        public User User { get; set; }
 
-        [ForeignKey("role_id")]
-        public Role role { get; set; }
+      
 
     }
 }
