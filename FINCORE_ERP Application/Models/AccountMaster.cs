@@ -38,6 +38,8 @@ namespace FINCORE_ERP_Application.Models
 
         // Navigation Properties
         public List<RevenueEntry> RevenueEntries { get; set; }
+
       //  public List<JournalEntry> JournalEntries { get; set; }
+
     }
 }
