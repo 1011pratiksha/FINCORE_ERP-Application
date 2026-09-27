@@ -52,6 +52,6 @@ namespace FINCORE_ERP_Application.Models
         public DateTime? ModifiedAt { get; set; }
 
         // Navigation Properties
-        //public List<Payment> Payments { get; set; }
+       // public List<Payment> Payments { get; set; }
     }
 }
