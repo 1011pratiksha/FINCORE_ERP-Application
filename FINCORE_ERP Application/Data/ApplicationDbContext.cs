@@ -44,6 +44,19 @@ namespace FINCORE_ERP_Application.Data
 
         public DbSet<VendorCategory> VendorCategories { get; set; }
 
+        public DbSet<BudgetCategory> BudgetCategories { get; set; }
+
+        public DbSet<BudgetLine> BudgetLines { get; set; }
+
+        public DbSet<Budget> Budgets { get; set;  }
+
+        public DbSet<ExpenseClaim> ExpenseClaims { get; set; }
+
+        public DbSet<OpexRequest> OpexRequests { get; set; } 
+
+        public DbSet<CapexRequest> CapexRequests { get; set; }
+
+        public DbSet<AccountMaster> AccountMaster { get; set; }
 
 
     }
