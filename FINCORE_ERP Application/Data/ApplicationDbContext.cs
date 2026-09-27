@@ -58,6 +58,15 @@ namespace FINCORE_ERP_Application.Data
 
         public DbSet<AccountMaster> AccountMaster { get; set; }
 
+        public DbSet<Asset> Assets { get; set; }
+        public DbSet<ARInvoice> ARInvoices { get; set; }
+        public DbSet<RevenueEntry> RevenueEntries { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<AssetAssignment> AssetAssignments { get; set; }
+        public DbSet<AssetLocation> AssetLocations { get; set; }
+        public DbSet<AssetDepreciation> AssetDepreciations { get; set; }
+        public DbSet<AssetDisposal> AssetDisposals { get; set; }
+        public DbSet<AssetHistory> AssetHistories { get; set; }
 
     }
 }
