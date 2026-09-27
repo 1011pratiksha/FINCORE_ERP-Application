@@ -1,12 +1,7 @@
-﻿using FINCORE_ERP_Application.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FINCORE_ERP_Application.Models
 {
@@ -23,35 +18,70 @@ namespace FINCORE_ERP_Application.Models
         [StringLength(40)]
         public string AssetName { get; set; }
 
+
+        // CAPEX Request
         [ForeignKey("CapexRequest")]
         public int? CapexRequestId { get; set; }
-      //  public CapexRequest CapexRequest { get; set; }
 
+       // public CapexRequest CapexRequest { get; set; }
+
+
+        // Purchase Order
         [ForeignKey("PurchaseOrder")]
         public int? PurchaseOrderId { get; set; }
-      //  public PurchaseOrder PurchaseOrder { get; set; }
 
+       // public PurchaseOrder PurchaseOrder { get; set; }
+
+
+        // GRN
         [ForeignKey("GRN")]
         public int? GRNId { get; set; }
+
        // public GRN GRN { get; set; }
 
+
+        // Vendor
         [ForeignKey("Vendor")]
         public int? VendorId { get; set; }
+
         public Vendor Vendor { get; set; }
 
+
+        // Department
         [ForeignKey("Department")]
         public int? DepartmentId { get; set; }
+
         public Department Department { get; set; }
 
+
+        // Purchase Information
         public DateTime? PurchaseDate { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
-        public decimal? PurchaseCost { get; set; } 
+        public decimal? PurchaseCost { get; set; }
 
+
+        // Asset Status
         [StringLength(20)]
         public string Status { get; set; }
 
+
+        // Audit Information
         public DateTime? CreatedAt { get; set; }
+
         public DateTime? ModifiedAt { get; set; }
+
+
+        // Asset Management Navigation Properties
+
+        public List<AssetAssignment> AssetAssignments { get; set; }
+
+        public List<AssetLocation> AssetLocations { get; set; }
+
+        public List<AssetDepreciation> AssetDepreciations { get; set; }
+
+        public List<AssetDisposal> AssetDisposals { get; set; }
+
+        public List<AssetHistory> AssetHistories { get; set; }
     }
 }
