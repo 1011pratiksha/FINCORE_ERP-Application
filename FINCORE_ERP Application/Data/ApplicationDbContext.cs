@@ -11,8 +11,6 @@ namespace FINCORE_ERP_Application.Data
             : base(options)
         {
 
-
-
         }
         public DbSet<ApprovalLog> ApprovalLog { get; set; }
         public DbSet<Branches> Branches { get; set; }
@@ -37,26 +35,14 @@ namespace FINCORE_ERP_Application.Data
         public DbSet<Vendor> Vendors { get; set; }
         public DbSet<Quotation> Quotations { get; set; }
         public DbSet<QuotationItem> QuotationItems { get; set; }
-
         public DbSet<VendorSelection> VendorSelections { get; set; }
         public DbSet<PurchaseRequisition> PurchaseRequisitions { get; set; }
         public DbSet<PurchaseRequisitionItem> PurchaseRequisitionItems { get; set; }
-
         public DbSet<VendorCategory> VendorCategories { get; set; }
-
-        public DbSet<BudgetCategory> BudgetCategories { get; set; }
-
-        public DbSet<BudgetLine> BudgetLines { get; set; }
-
-        public DbSet<Budget> Budgets { get; set;  }
-
-        public DbSet<ExpenseClaim> ExpenseClaims { get; set; }
-
-        public DbSet<OpexRequest> OpexRequests { get; set; } 
-
-        public DbSet<CapexRequest> CapexRequests { get; set; }
-
-        public DbSet<AccountMaster> AccountMaster { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<APInvoice> APInvoices { get; set; }
+        public DbSet<AccountMaster> AccountMasters { get; set; }
+        public DbSet<JournalEntry> JournalEntries { get; set; }
 
         public DbSet<Asset> Assets { get; set; }
         public DbSet<ARInvoice> ARInvoices { get; set; }
