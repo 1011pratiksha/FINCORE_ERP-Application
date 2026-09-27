@@ -8,7 +8,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fincore.Domain.Models
+namespace FINCORE_ERP_Application.Models
 {
     public class Asset
     {
@@ -25,15 +25,15 @@ namespace Fincore.Domain.Models
 
         [ForeignKey("CapexRequest")]
         public int? CapexRequestId { get; set; }
-        public CapexRequest CapexRequest { get; set; }
+      //  public CapexRequest CapexRequest { get; set; }
 
         [ForeignKey("PurchaseOrder")]
         public int? PurchaseOrderId { get; set; }
-        public PurchaseOrder PurchaseOrder { get; set; }
+      //  public PurchaseOrder PurchaseOrder { get; set; }
 
         [ForeignKey("GRN")]
         public int? GRNId { get; set; }
-        public GRN GRN { get; set; }
+       // public GRN GRN { get; set; }
 
         [ForeignKey("Vendor")]
         public int? VendorId { get; set; }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using FINCORE_ERP_Application.Models;
+using Microsoft.Data.SqlClient;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
@@ -13,38 +14,38 @@ namespace FINCORE_ERP_Application.Models
     public class User
     {
         [Key]
-        public int UserId { get; set; }
+        public int user_id { get; set; }
 
-        [ForeignKey("Role")]
-        public int RoleId { get; set; }
-        public Role Role { get; set; }
+        [ForeignKey("role_id")]
+        public int role_id { get; set; }
+        public Role role { get; set; }
 
-        public string UserName { get; set; }
+        public string full_name { get; set; }
 
-        public string Email { get; set; }
+        public string email { get; set; }
 
-     
-        public string PasswordHash { get; set; }
+        public string pass { get; set; }
 
-        public string Phone { get; set; }
+        public string phone { get; set; }
 
-        public DateTime? LastLogin { get; set; }
-       // public string RefreshToken { get; set; }
+        public byte is_active { get; set; }
 
-        public byte IsActive { get; set; }
 
-        public DateTime CreatedAt { get; set; }
+        [ForeignKey("user_id")]
+        public int created_by { get; set; }
+         public User user { get; set; }
 
-        public DateTime? ModifiedAt { get; set; }
+        public DateTime created_at { get; set; }
 
-        [ForeignKey("CreatedByUser")]
-        public int CreatedBy { get; set; }
-        public User CreatedByUser { get; set; }
+        public DateTime? modified_at { get; set; }
 
-        [ForeignKey("ModifiedByUser")]
-        public int ModifiedBy { get; set; }
-        public User ModifiedByUser { get; set; }
 
-       
+         [ForeignKey("user_id")]
+        public int? modified_by { get; set; }
+
+
+
     }
 }
+
+

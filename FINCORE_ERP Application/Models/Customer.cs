@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fincore.Domain.Models
+namespace FINCORE_ERP_Application.Models
 {
     public class Customer
     {

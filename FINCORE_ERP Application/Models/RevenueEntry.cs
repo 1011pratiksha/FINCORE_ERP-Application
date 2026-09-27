@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fincore.Domain.Models
+namespace FINCORE_ERP_Application.Models
 {
     public class RevenueEntry
     {
@@ -41,7 +41,7 @@ namespace Fincore.Domain.Models
         [Required]
         [ForeignKey("AccountMaster")]
         public int AccountId { get; set; }
-        public AccountMaster AccountMaster { get; set; }
+       // public AccountMaster AccountMaster { get; set; }
 
         [Required]
         [StringLength(20)]
