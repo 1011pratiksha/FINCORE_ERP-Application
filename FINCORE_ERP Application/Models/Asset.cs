@@ -46,7 +46,7 @@ namespace Fincore.Domain.Models
         public DateTime? PurchaseDate { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
-        public decimal? PurchaseCost { get; set; }
+        public decimal? PurchaseCost { get; set; } 
 
         [StringLength(20)]
         public string Status { get; set; }
