@@ -7,24 +7,22 @@ namespace FINCORE_ERP_Application.Models
     public class Company
     {
         [Key]
-        public int CompanyId { get; set; }
+        public int company_id { get; set; }
 
        
-        public string CompanyCode { get; set; }
+        public string company_Code { get; set; }
 
         
-        public string CompanyName { get; set; }
-        public string LegalName { get; set; }
+        public string company_name { get; set; }
+        public string legal_name { get; set; }
 
-        public string TaxNumber { get; set; }
+        public string tax_number { get; set; }
 
-        public string Email { get; set; }
+        public string email { get; set; }
 
-        public string Phone { get; set; }
+        public string phone { get; set; }
 
-        [ForeignKey("Country")]
-        public int CountryId { get; set; }
-        public Country Country { get; set; }
+        public string country { get; set; }
 
        
 
@@ -33,19 +31,22 @@ namespace FINCORE_ERP_Application.Models
         public string PAN { get; set; }
 
         public string TAN { get; set; }
-        public byte IsActive { get; set; }
+        public byte is_active { get; set; }
         public DateTime created_at { get; set; }
 
-        // ForeignKey[("UserId")]
+        [ ForeignKey("UserId")]
         public int created_by { get; set; }
-        //  public User User { get; set; }
+          public User User { get; set; }
 
 
 
         public DateTime? modified_at { get; set; }
 
-        // ForeignKey[("UserId")]
+        [ ForeignKey("UserId")]
         public int? modified_by { get; set; }
+
+        //navigation property
+        public List<Branches> Branches { get; set; }
 
     }
 }
