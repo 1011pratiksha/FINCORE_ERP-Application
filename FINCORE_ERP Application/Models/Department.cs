@@ -9,7 +9,7 @@ namespace FINCORE_ERP_Application.Models
         public int department_id { get; set; }
 
         [ForeignKey("branch_id")]
-        public int branch_id { get; set; }
+        public int? branch_id { get; set; }
         public Branches Branch { get; set; }
 
         public string department_name { get; set; }
@@ -18,7 +18,7 @@ namespace FINCORE_ERP_Application.Models
         public byte is_active { get; set; }
 
         [ForeignKey("UserId")]
-        public int created_by { get; set; }
+        public int? created_by { get; set; }
 
         public DateTime created_at { get; set; }
 

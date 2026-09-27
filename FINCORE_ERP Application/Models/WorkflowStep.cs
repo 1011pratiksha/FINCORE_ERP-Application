@@ -9,18 +9,15 @@ namespace FINCORE_ERP_Application.Models
         public int workflow_step_id { get; set; }
 
         [ForeignKey("workflow_definition_id")]
-        public int workflow_definition_id { get; set; }
+        public int? workflow_definition_id { get; set; }
         public WorkflowDefinition? WorkflowDefinition { get; set; }
 
-        [Required]
         public int step_number { get; set; }
 
-        [Required]
-        [StringLength(100)]
         public string step_name { get; set; }
 
         [ForeignKey("approver_role_id")]
-        public int approver_role_id { get; set; }
+        public int? approver_role_id { get; set; }
         public Role? ApproverRole { get; set; }
 
 
@@ -33,12 +30,12 @@ namespace FINCORE_ERP_Application.Models
         public DateTime created_at { get; set; } = DateTime.Now;
 
         [ForeignKey("user_id")]
-        public int created_by { get; set; }
+        public int? created_by { get; set; }
 
-        public DateTime modified_at { get; set; } = DateTime.Now;
+        public DateTime? modified_at { get; set; } = DateTime.Now;
 
         [ForeignKey("user_id")]
-        public int modified_by { get; set; }
+        public int? modified_by { get; set; }
 
         public User User { get; set; }
 
