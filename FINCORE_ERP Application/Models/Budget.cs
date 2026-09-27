@@ -1,4 +1,7 @@
-﻿namespace FINCORE_ERP_Application.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace FINCORE_ERP_Application.Models
 {
     public class Budget
     {
@@ -27,7 +30,7 @@
 
         public DateTime? ModifiedAt { get; set; }
 
-        [Foreignkey("CreatedByUser")]
+        [ForeignKey("CreatedByUser")]
         public int CreatedBy { get; set; }
         public User CreatedByUser { get; set; }
 

@@ -40,6 +40,6 @@ namespace FINCORE_ERP_Application.Models
 
         // Navigation Properties
         public List<ExpenseClaim> ExpenseClaims { get; set; }
-        public List<WorkOrder> WorkOrders { get; set; }
+        //public List<WorkOrder> WorkOrders { get; set; }
     }
 }
