@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Fincore.Domain.Models
+
+namespace FINCORE_ERP_Application.Models
 {
     public class RFQ
     {
@@ -38,15 +35,14 @@ namespace Fincore.Domain.Models
 
         public byte? IsActive { get; set; }
 
-        [Required]
-        [ForeignKey("CreatedByEmployee")]
-        public int CreatedBy { get; set; }
-        public Employee CreatedByEmployee { get; set; }
+        //[Required]
+        //[ForeignKey("CreatedByEmployee")]
+        //public int CreatedBy { get; set; }
+        //public Employee CreatedByEmployee { get; set; }
 
         public DateTime? CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
 
-        // Navigation Properties
         public List<RFQVendor> RFQVendors { get; set; }
         public List<Quotation> Quotations { get; set; }
         public List<VendorSelection> VendorSelections { get; set; }

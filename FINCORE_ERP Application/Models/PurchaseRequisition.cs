@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Fincore.Domain.Models
+
+namespace FINCORE_ERP_Application.Models
 {
     public class PurchaseRequisition
     {
@@ -19,7 +16,7 @@ namespace Fincore.Domain.Models
 
         [ForeignKey("CapexRequest")]
         public int? CapexRequestId { get; set; }
-        public CapexRequest CapexRequest { get; set; }
+        //public CapexRequest CapexRequest { get; set; }
 
         [Required]
         [StringLength(255)]
@@ -65,7 +62,6 @@ namespace Fincore.Domain.Models
         public int ModifiedBy { get; set; }
         public User ModifiedByUser { get; set; }
 
-        // Navigation Properties
         public List<PurchaseRequisitionItem> PurchaseRequisitionItems { get; set; }
         public List<RFQ> RFQs { get; set; }
     }

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Fincore.Domain.Models
+
+namespace FINCORE_ERP_Application.Models
 {
     public class Quotation
     {
@@ -40,9 +37,8 @@ namespace Fincore.Domain.Models
         public DateTime? CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
 
-        // Navigation Properties
         public List<QuotationItem> QuotationItems { get; set; }
         public List<VendorSelection> VendorSelections { get; set; }
-        public List<PurchaseOrder> PurchaseOrders { get; set; }
+        //public List<PurchaseOrder> PurchaseOrders { get; set; }
     }
 }

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Fincore.Domain.Models
+
+namespace FINCORE_ERP_Application.Models
 {
     public class Vendor
     {
@@ -54,16 +51,15 @@ namespace Fincore.Domain.Models
         public int ModifiedBy { get; set; }
         public User ModifiedByUser { get; set; }
 
-        // Navigation Properties
         public List<PurchaseRequisition> PurchaseRequisitions { get; set; }
         public List<RFQ> RFQs { get; set; }
         public List<RFQVendor> RFQVendors { get; set; }
         public List<Quotation> Quotations { get; set; }
         public List<VendorSelection> VendorSelections { get; set; }
-        public List<GRN> GRNs { get; set; }
-        public List<Asset> Assets { get; set; }
-        public List<WorkOrder> WorkOrders { get; set; }
-        public List<APInvoice> APInvoices { get; set; }
-        public List<Payment> Payments { get; set; }
+        //public List<GRN> GRNs { get; set; }
+        //public List<Asset> Assets { get; set; }
+        //public List<WorkOrder> WorkOrders { get; set; }
+        //public List<APInvoice> APInvoices { get; set; }
+        //public List<Payment> Payments { get; set; }
     }
 }
