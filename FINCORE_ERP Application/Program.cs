@@ -1,4 +1,6 @@
 using FINCORE_ERP_Application.Data;
+using FINCORE_ERP_Application.Interfaces;
+using FINCORE_ERP_Application.Services;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -11,7 +13,28 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("dbconn")
     ));
+
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+
+//builder.Services
+//    .AddAuthentication()
+//    .AddCookie("GoogleCookie")
+//    .AddGoogle(options =>
+//    {
+//        options.ClientId =
+//            builder.Configuration["Authentication:Google:ClientId"]!;
+
+//        options.ClientSecret =
+//            builder.Configuration["Authentication:Google:ClientSecret"]!;
+
+//        options.SignInScheme = "GoogleCookie";
+//    });
+
 var app = builder.Build();
+
+
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
