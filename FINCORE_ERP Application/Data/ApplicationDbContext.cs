@@ -14,6 +14,45 @@ namespace FINCORE_ERP_Application.Data
 
 
         }
+        public DbSet<ApprovalLog> ApprovalLog { get; set; }
+        public DbSet<Branches> Branches { get; set; }
+        public DbSet<Company> Company { get; set; }
+        public DbSet<CostCenter> CostCenter { get; set; }
+        public DbSet<Customer> Customer { get; set; }
+        public DbSet<Department> Department { get; set; }
+        public DbSet<Employee> Employee { get; set; }
+        public DbSet<Module> Module { get; set; }
+        public DbSet<Permissions> Permissions { get; set; }
+        public DbSet<ProfitCenter> ProfitCenter { get; set; }
+        public DbSet<Role> Role { get; set; }
+        public DbSet<RolePermissionModule> RolePermissionModule { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<WorkflowDefinition> WorkflowDefinition { get; set; }
+        public DbSet<WorkflowHistory> WorkflowHistory { get; set; }
+        public DbSet<WorkflowStep> WorkflowStep { get; set; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         public DbSet<RFQVendor> RFQVendors { get; set; }
         public DbSet<RFQ> RFQs { get; set; } 
