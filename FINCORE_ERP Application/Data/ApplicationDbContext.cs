@@ -32,28 +32,6 @@ namespace FINCORE_ERP_Application.Data
         public DbSet<WorkflowStep> WorkflowStep { get; set; }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         public DbSet<RFQVendor> RFQVendors { get; set; }
         public DbSet<RFQ> RFQs { get; set; } 
         public DbSet<Vendor> Vendors { get; set; }
