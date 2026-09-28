@@ -18,6 +18,8 @@ builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddSession();
 
 
+builder.Services.AddScoped<IPurchaseOrderService, PurchaseOrderService>();
+
 //builder.Services
 //    .AddAuthentication()
 //    .AddCookie("GoogleCookie")

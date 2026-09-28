@@ -1,0 +1,72 @@
+﻿@model FINCORE_ERP_Application.Models.PurchaseOrder
+
+@{
+    ViewData["Title"] = "Create Purchase Order";
+}
+
+<h2>Create Purchase Order</h2>
+
+<form asp-action="Create" method="post">
+
+    <div class="mb-3">
+        <label asp-for="VendorId" class="form-label">Vendor ID</label>
+        <input asp-for="VendorId" class="form-control" />
+        <span asp-validation-for="VendorId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="QuotationId" class="form-label">Quotation ID</label>
+        <input asp-for="QuotationId" class="form-control" />
+        <span asp-validation-for="QuotationId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PONumber" class="form-label">PO Number</label>
+        <input asp-for="PONumber" class="form-control" />
+        <span asp-validation-for="PONumber" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="TotalAmount" class="form-label">Total Amount</label>
+        <input asp-for="TotalAmount" class="form-control" />
+        <span asp-validation-for="TotalAmount" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Status" class="form-label">Status</label>
+        <input asp-for="Status" class="form-control" />
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="IsActive" class="form-label">Is Active</label>
+        <select asp-for="IsActive" class="form-control">
+            <option value="1">Active</option>
+            <option value="0">Inactive</option>
+        </select>
+        <span asp-validation-for="IsActive" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CreatedBy" class="form-label">Created By</label>
+        <input asp-for="CreatedBy" class="form-control" />
+        <span asp-validation-for="CreatedBy" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CreatedAt" class="form-label">Created At</label>
+        <input asp-for="CreatedAt" type="datetime-local" class="form-control" />
+        <span asp-validation-for="CreatedAt" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
