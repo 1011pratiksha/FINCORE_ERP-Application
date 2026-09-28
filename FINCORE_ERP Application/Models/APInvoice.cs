@@ -22,13 +22,13 @@ namespace FINCORE_ERP_Application.Models
         public int? PurchaseOrderId { get; set; }
         public PurchaseOrder PurchaseOrder { get; set; }
 
-        //[ForeignKey("GRN")]
-        //public int? GRNId { get; set; }
-        //public GRN GRN { get; set; }
+        [ForeignKey("GRN")]
+        public int? GRNId { get; set; }
+        public GRN GRN { get; set; }
 
-        //[ForeignKey("WorkOrder")]
-        //public int? WorkOrderId { get; set; }
-        //public WorkOrder WorkOrder { get; set; }
+        [ForeignKey("WorkOrder")]
+        public int? WorkOrderId { get; set; }
+        public WorkOrder WorkOrder { get; set; }
 
         [Required]
         public DateTime InvoiceDate { get; set; }

@@ -51,6 +51,7 @@ namespace FINCORE_ERP_Application.Data
         public DbSet<AssetDisposal> AssetDisposals { get; set; }
         public DbSet<AssetHistory> AssetHistories { get; set; }
 
+<<<<<<< HEAD
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -126,6 +127,54 @@ namespace FINCORE_ERP_Application.Data
                 .OnDelete(DeleteBehavior.Restrict);
 
         }
+=======
+        public DbSet<OpexRequest> OpexRequests { get; set; }
+
+        public DbSet<CapexRequest> CapexRequests { get; set; }
+
+        public DbSet<BudgetCategory> BudgetCategories { get; set; }
+
+        public DbSet<Budget> Budgets { get; set; }
+
+        public DbSet<BudgetLine> BudgetLines { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<BudgetLine>(u =>
+            {
+                u.HasOne(x => x.BudgetCategory)
+                .WithMany(x => x.BudgetLines)
+                .HasForeignKey(x => x.BudgetCategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+                u.HasOne(x => x.Budget)
+                .WithMany(x => x.BudgetLines)
+                .HasForeignKey(x => x.BudgetId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+            });
+
+            builder.Entity<OpexRequest>(u =>
+            {
+                u.HasOne(x => x.BudgetLine)
+                .WithMany(x => x.OpexRequests)
+                .HasForeignKey(x => x.OpexRequestId)
+                .OnDelete(DeleteBehavior.Restrict);
+            });
+
+
+            builder.Entity<CapexRequest>(u =>
+            {
+                u.HasOne(x => x.BudgetLine)
+                .WithMany(x => x.CapexRequests)
+                .HasForeignKey(x => x.CapexRequestId)
+                .OnDelete(DeleteBehavior.Restrict);
+            });
+        }
+
+>>>>>>> e7e661a08a8a263154421b154980f0d41f0a572c
     }
 }
 
