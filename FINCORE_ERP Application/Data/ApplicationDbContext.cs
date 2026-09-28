@@ -487,9 +487,7 @@ namespace FINCORE_ERP_Application.Data
                 .HasForeignKey(a => a.CreatedBy)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            //// =========================================================
-            //// DECIMAL PRECISION
-            //// =========================================================
+            //decimal precision
 
             //modelBuilder.Entity<APInvoice>()
             //    .Property(x => x.Amount)
