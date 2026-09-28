@@ -57,6 +57,6 @@ namespace FINCORE_ERP_Application.Models
 
         public DateTime CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
-        public List<Payment> Payments { get; set; } = new();
+        public ICollection<Payment> Payments { get; set; } = new List<Payment>();
     }
 }

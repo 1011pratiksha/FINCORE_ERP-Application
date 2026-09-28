@@ -12,7 +12,7 @@ namespace FINCORE_ERP_Application.Controllers
         {
             return View();
         }
-        public IActionResult EmployeeDashboard()
+        public IActionResult VendorDashboard()
         {
             return View();
         }
