@@ -98,6 +98,104 @@ namespace FINCORE_ERP_Application.Data
                 .HasForeignKey(x => x.CapexRequestId)
                 .OnDelete(DeleteBehavior.Restrict);
             });
+
+            builder.Entity<ExpenseClaim>(u =>
+            {
+                u.HasOne(x => x.OpexRequest)
+                .WithMany(x => x.ExpenseClaims)
+                .HasForeignKey(x => x.ExpenseClaimId)
+                .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            builder.Entity<Budget>(u =>
+            {
+                u.HasOne(x => x.CreatedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.CreatedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            builder.Entity<BudgetLine>(u =>
+            {
+                u.HasOne(x => x.CreatedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.CreatedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            builder.Entity<BudgetCategory>(u =>
+            {
+                u.HasOne(x => x.CreatedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.CreatedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            builder.Entity<OpexRequest>(u =>
+            {
+                u.HasOne(x => x.RequestedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.RequestedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            builder.Entity<CapexRequest>(u =>
+            {
+                u.HasOne(x => x.RequestedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.RequestedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            builder.Entity<AccountMaster>(u =>
+            {
+                u.HasOne(x => x.CreatedByUser)
+               .WithMany()
+               .HasForeignKey(x => x.CreatedBy)
+               .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            builder.Entity<CapexRequest>(u =>
+            {
+                u.HasOne(x => x.ApprovedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.ApprovedByUser)
+                .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            builder.Entity<OpexRequest>(u =>
+            {
+                u.HasOne(x => x.ApprovedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.ApprovedByUser)
+                .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            builder.Entity<AccountMaster>(u =>
+            {
+                u.HasOne(x => x.ModifiedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.ModifiedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            builder.Entity<ExpenseClaim>(u =>
+            {
+                u.HasOne(x => x.ClaimByUser)
+                .WithMany()
+                .HasForeignKey(x => x.ClaimBy)
+                .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            builder.Entity<CapexRequest>(u =>
+            {
+                u.HasOne(x => x.Department)
+                .WithMany(X => X.capexRequests)
+                .HasForeignKey(x => x.CapexRequestId)
+                .OnDelete(DeleteBehavior.Restrict);
+                
+             });
+
         }
 
     }
