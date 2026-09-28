@@ -370,6 +370,119 @@ namespace FINCORE_ERP_Application.Data
         .HasForeignKey(x => x.CapexRequestId)
         .OnDelete(DeleteBehavior.Restrict);
     });
+          modelBuilder.Entity<Vendor>()
+        .HasOne(x => x.VendorCategory)
+        .WithMany(x => x.Vendors)
+        .HasForeignKey(x => x.VendorCategoryId)
+        .OnDelete(DeleteBehavior.Restrict);
+
+    modelBuilder.Entity<Vendor>()
+        .HasOne(x => x.Company)
+        .WithMany()
+        .HasForeignKey(x => x.CompanyId)
+        .OnDelete(DeleteBehavior.Restrict);
+
+    modelBuilder.Entity<Vendor>()
+        .HasOne(x => x.CreatedByUser)
+        .WithMany()
+        .HasForeignKey(x => x.CreatedBy)
+        .OnDelete(DeleteBehavior.Restrict);
+
+    modelBuilder.Entity<Vendor>()
+        .HasOne(x => x.ModifiedByUser)
+        .WithMany()
+        .HasForeignKey(x => x.ModifiedBy)
+        .OnDelete(DeleteBehavior.Restrict);
+
+    modelBuilder.Entity<PurchaseRequisition>()
+        .HasOne(x => x.Vendor)
+        .WithMany(x => x.PurchaseRequisitions)
+        .HasForeignKey(x => x.VendorId)
+        .OnDelete(DeleteBehavior.Restrict);
+
+    modelBuilder.Entity<PurchaseRequisitionItem>()
+        .HasOne(x => x.PurchaseRequisition)
+        .WithMany(x => x.PurchaseRequisitionItems)
+        .HasForeignKey(x => x.PurchaseRequisitionId)
+        .OnDelete(DeleteBehavior.Cascade);
+
+    modelBuilder.Entity<PurchaseRequisitionItem>()
+        .HasOne(x => x.VendorCategory)
+        .WithMany(x => x.PurchaseRequisitionItems)
+        .HasForeignKey(x => x.CategoryId)
+        .OnDelete(DeleteBehavior.Restrict);
+
+    modelBuilder.Entity<RFQ>()
+        .HasOne(x => x.PurchaseRequisition)
+        .WithMany(x => x.RFQs)
+        .HasForeignKey(x => x.PurchaseRequisitionId)
+        .OnDelete(DeleteBehavior.Restrict);
+
+    modelBuilder.Entity<RFQ>()
+        .HasOne(x => x.Vendor)
+        .WithMany(x => x.RFQs)
+        .HasForeignKey(x => x.VendorId)
+        .OnDelete(DeleteBehavior.Restrict);
+
+    modelBuilder.Entity<RFQVendor>()
+        .HasOne(x => x.RFQ)
+        .WithMany(x => x.RFQVendors)
+        .HasForeignKey(x => x.RFQId)
+        .OnDelete(DeleteBehavior.Cascade);
+
+    modelBuilder.Entity<RFQVendor>()
+        .HasOne(x => x.Vendor)
+        .WithMany(x => x.RFQVendors)
+        .HasForeignKey(x => x.VendorId)
+        .OnDelete(DeleteBehavior.Restrict);
+
+    modelBuilder.Entity<Quotation>()
+        .HasOne(x => x.RFQ)
+        .WithMany(x => x.Quotations)
+        .HasForeignKey(x => x.RFQId)
+        .OnDelete(DeleteBehavior.Cascade);
+
+    modelBuilder.Entity<Quotation>()
+        .HasOne(x => x.Vendor)
+        .WithMany(x => x.Quotations)
+        .HasForeignKey(x => x.VendorId)
+        .OnDelete(DeleteBehavior.Restrict);
+
+    modelBuilder.Entity<QuotationItem>()
+        .HasOne(x => x.Quotation)
+        .WithMany(x => x.QuotationItems)
+        .HasForeignKey(x => x.QuotationId)
+        .OnDelete(DeleteBehavior.Cascade);
+
+    modelBuilder.Entity<QuotationItem>()
+        .HasOne(x => x.PurchaseRequisitionItem)
+        .WithMany(x => x.QuotationItems)
+        .HasForeignKey(x => x.PRItemId)
+        .OnDelete(DeleteBehavior.Restrict);
+
+    modelBuilder.Entity<VendorSelection>()
+        .HasOne(x => x.RFQ)
+        .WithMany(x => x.VendorSelections)
+        .HasForeignKey(x => x.RFQId)
+        .OnDelete(DeleteBehavior.Restrict);
+
+    modelBuilder.Entity<VendorSelection>()
+        .HasOne(x => x.Quotation)
+        .WithMany(x => x.VendorSelections)
+        .HasForeignKey(x => x.QuotationId)
+        .OnDelete(DeleteBehavior.Restrict);
+
+    modelBuilder.Entity<VendorSelection>()
+        .HasOne(x => x.SelectedVendor)
+        .WithMany(x => x.VendorSelections)
+        .HasForeignKey(x => x.SelectedVendorId)
+        .OnDelete(DeleteBehavior.Restrict);
+
+    modelBuilder.Entity<VendorSelection>()
+        .HasOne(x => x.SelectedByUser)
+        .WithMany()
+        .HasForeignKey(x => x.SelectedBy)
+        .OnDelete(DeleteBehavior.Restrict);
 }
     }
 }
