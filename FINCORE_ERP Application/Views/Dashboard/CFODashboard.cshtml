@@ -1,0 +1,54 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "CFO Dashboard";
+}
+
+<div class="container-fluid py-4">
+    <h1 class="h3 mb-4 text-gray-800">💼 Executive Corporate Governance & Strategy Panel</h1>
+
+    <!-- Executive Financial Data Counters -->
+    <div class="row mb-4">
+        <div class="col border-end text-center"><h6 class="text-muted small text-uppercase">Net Monthly Gross Revenue</h6><h2 class="fw-bold text-success">₹1,24,80,000</h2></div>
+        <div class="col border-end text-center"><h6 class="text-muted small text-uppercase">Operational Run Expense Outlays</h6><h2 class="fw-bold text-danger">₹84,30,000</h2></div>
+        <div class="col border-end text-center"><h6 class="text-muted small text-uppercase">Validated Capital Equipment Allocations</h6><h2 class="fw-bold text-primary">₹15,00,000</h2></div>
+        <div class="col text-center"><h6 class="text-muted small text-uppercase">Consolidated Corporate Margin</h6><h2 class="fw-bold text-info">+32.4% Profit</h2></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card shadow h-100">
+                <div class="card-header bg-primary text-white py-3"><h6 class="m-0 font-weight-bold">⚡ High-Value Strategic CAPEX Authorization Gates</h6></div>
+                <div class="card-body">
+                    <p class="small text-muted">Capital allocations exceeding local limits require executive authorization before procurement processing begins.</p>
+                    <div class="table-responsive">
+                        <table class="table align-middle table-sm">
+                            <thead><tr><th>Transaction</th><th>Origin</th><th>Required Investment</th><th>Action</th></tr></thead>
+                            <tbody>
+                                <tr><td>#CPX-4001 Core Data Equipment</td><td>IT Division</td><td>₹8,50,000</td><td><a href="/Dashboard/CapexDetails/4001" class="btn btn-xs btn-primary btn-sm px-2">Authorize</a></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card shadow h-100">
+                <div class="card-header bg-dark text-white py-3"><h6 class="m-0 font-weight-bold">📈 Enterprise Accounting Statements Console</h6></div>
+                <div class="card-body">
+                    <p class="small text-muted">Generate certified accounting outputs pulling live operational parameters from the General Ledger.</p>
+                    <div class="list-group list-group-flush">
+                        <a href="/Dashboard/ProfitLoss" class="list-group-item list-group-item-action">📊 Generate Real-Time Profit & Loss Statement</a>
+                        <a href="/Dashboard/BalanceSheet" class="list-group-item list-group-item-action">🏛️ Generate Certified Balance Sheet Matrices</a>
+                        <a href="/Dashboard/CashFlow" class="list-group-item list-group-item-action">🌊 Query Live Cash Flow Forecast Pipelines</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

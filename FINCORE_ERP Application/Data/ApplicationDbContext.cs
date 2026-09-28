@@ -27,29 +27,29 @@ namespace FINCORE_ERP_Application.Data
         public DbSet<WorkflowHistory> WorkflowHistory { get; set; }
         public DbSet<WorkflowStep> WorkflowStep { get; set; }
 
-        //public DbSet<RFQVendor> RFQVendors { get; set; }
-        //public DbSet<RFQ> RFQs { get; set; }
-        //public DbSet<Vendor> Vendors { get; set; }
-        //public DbSet<Quotation> Quotations { get; set; }
-        //public DbSet<QuotationItem> QuotationItems { get; set; }
-        //public DbSet<VendorSelection> VendorSelections { get; set; }
-        //public DbSet<PurchaseRequisition> PurchaseRequisitions { get; set; }
-        //public DbSet<PurchaseRequisitionItem> PurchaseRequisitionItems { get; set; }
-        //public DbSet<VendorCategory> VendorCategories { get; set; }
-        //public DbSet<Payment> Payments { get; set; }
-        //public DbSet<APInvoice> APInvoices { get; set; }
-        //public DbSet<AccountMaster> AccountMasters { get; set; }
-        //public DbSet<JournalEntry> JournalEntries { get; set; }
+        public DbSet<RFQVendor> RFQVendors { get; set; }
+        public DbSet<RFQ> RFQs { get; set; }
+        public DbSet<Vendor> Vendors { get; set; }
+        public DbSet<Quotation> Quotations { get; set; }
+        public DbSet<QuotationItem> QuotationItems { get; set; }
+        public DbSet<VendorSelection> VendorSelections { get; set; }
+        public DbSet<PurchaseRequisition> PurchaseRequisitions { get; set; }
+        public DbSet<PurchaseRequisitionItem> PurchaseRequisitionItems { get; set; }
+        public DbSet<VendorCategory> VendorCategories { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<APInvoice> APInvoices { get; set; }
+        public DbSet<AccountMaster> AccountMasters { get; set; }
+        public DbSet<JournalEntry> JournalEntries { get; set; }
 
-        //public DbSet<Asset> Assets { get; set; }
-        //public DbSet<ARInvoice> ARInvoices { get; set; }
-        //public DbSet<RevenueEntry> RevenueEntries { get; set; }
-        //public DbSet<Customer> Customers { get; set; }
-        //public DbSet<AssetAssignment> AssetAssignments { get; set; }
-        //public DbSet<AssetLocation> AssetLocations { get; set; }
-        //public DbSet<AssetDepreciation> AssetDepreciations { get; set; }
-        //public DbSet<AssetDisposal> AssetDisposals { get; set; }
-        //public DbSet<AssetHistory> AssetHistories { get; set; }
+        public DbSet<Asset> Assets { get; set; }
+        public DbSet<ARInvoice> ARInvoices { get; set; }
+        public DbSet<RevenueEntry> RevenueEntries { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<AssetAssignment> AssetAssignments { get; set; }
+        public DbSet<AssetLocation> AssetLocations { get; set; }
+        public DbSet<AssetDepreciation> AssetDepreciations { get; set; }
+        public DbSet<AssetDisposal> AssetDisposals { get; set; }
+        public DbSet<AssetHistory> AssetHistories { get; set; }
 
 
 
@@ -57,31 +57,7 @@ namespace FINCORE_ERP_Application.Data
         {
             base.OnModelCreating(modelBuilder);
             
-            modelBuilder.Ignore<RFQVendor>();
-            modelBuilder.Ignore<RFQ>();
-            modelBuilder.Ignore<Vendor>();
-            modelBuilder.Ignore<Quotation>();
-            modelBuilder.Ignore<QuotationItem>();
-            modelBuilder.Ignore<VendorSelection>();
-            modelBuilder.Ignore<PurchaseRequisition>();
-            modelBuilder.Ignore<PurchaseRequisitionItem>();
-            modelBuilder.Ignore<VendorCategory>();
-            modelBuilder.Ignore<Payment>();
-            modelBuilder.Ignore<APInvoice>();
-            modelBuilder.Ignore<AccountMaster>();
-            modelBuilder.Ignore<JournalEntry>();
-
-            modelBuilder.Ignore<Asset>();
-            modelBuilder.Ignore<ARInvoice>();
-            modelBuilder.Ignore<RevenueEntry>();
-            modelBuilder.Ignore<AssetAssignment>();
-            modelBuilder.Ignore<AssetLocation>();
-            modelBuilder.Ignore<AssetDepreciation>();
-            modelBuilder.Ignore<AssetDisposal>();
-            modelBuilder.Ignore<AssetHistory>();
-
-
-          
+            
 
             modelBuilder.Entity<User>()
                 .HasOne(u => u.role)

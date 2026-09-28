@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Employee Dashboard";
+}
+
+<div class="container-fluid py-4">
+    <h1 class="h3 mb-4 text-gray-800">🧑‍💻 Personal Self-Service Panel</h1>
+
+    <div class="row">
+        <!-- Main Form Launcher Column -->
+        <div class="col-lg-4 mb-4">
+            <div class="card shadow border-top border-primary border-4 p-3 text-center">
+                <h5 class="fw-bold mt-2">Operational Expense Entry</h5>
+                <p class="text-muted small">File digital receipts for operational cost-center cash outlays.</p>
+                <a href="/Dashboard/CreateExpenseClaim" class="btn btn-primary w-100 py-2">📝 Launch Reimbursement Wizard</a>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="card shadow border-top border-success border-4 p-3 text-center">
+                <h5 class="fw-bold mt-2">Material Supply Requisition</h5>
+                <p class="text-muted small">Initiate external material/resource procurement requisitions.</p>
+                <a href="/Dashboard/CreatePurchaseRequisition" class="btn btn-success w-100 py-2">🛒 Launch PR Request Form</a>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="card shadow border-top border-info border-4 p-3 text-center">
+                <h5 class="fw-bold mt-2">Personal Document Hub</h5>
+                <p class="text-muted small">Track processing histories of personal corporate submittals.</p>
+                <a href="/Dashboard/MyRequests" class="btn btn-info text-white w-100 py-2">🔍 Query Status Inquiries</a>
+            </div>
+        </div>
+    </div>
+</div>
