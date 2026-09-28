@@ -46,5 +46,7 @@ namespace FINCORE_ERP_Application.Models
         [ForeignKey("ApprovedByUser")]
         public int? ApprovedBy { get; set; }
         public User ApprovedByUser { get; set; }
+
+        public List<CostCenter> costCenters { get; set; } 
     }
 }
