@@ -1,0 +1,64 @@
+﻿@model FINCORE_ERP_Application.Models.Vendor
+
+<h2>Vendor Details</h2>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>Vendor Code</th>
+        <td>@Model.VendorCode</td>
+    </tr>
+
+    <tr>
+        <th>Category</th>
+        <td>@Model.VendorCategory?.CategoryName</td>
+    </tr>
+
+    <tr>
+        <th>Company</th>
+        <td>@Model.Company?.CompanyName</td>
+    </tr>
+
+    <tr>
+        <th>Bank Account</th>
+        <td>@Model.BankAccount</td>
+    </tr>
+
+    <tr>
+        <th>PAN</th>
+        <td>@Model.PAN</td>
+    </tr>
+
+    <tr>
+        <th>Performance Score</th>
+        <td>@Model.PerformanceScore</td>
+    </tr>
+
+    <tr>
+        <th>Verified</th>
+        <td>@Model.IsVerified</td>
+    </tr>
+
+    <tr>
+        <th>Status</th>
+        <td>@Model.IsActive</td>
+    </tr>
+
+    <tr>
+        <th>Created At</th>
+        <td>@Model.CreatedAt</td>
+    </tr>
+
+    <tr>
+        <th>Modified At</th>
+        <td>@Model.ModifiedAt</td>
+    </tr>
+
+</table>
+
+<a asp-action="Edit"
+   asp-route-id="@Model.VendorId"
+   class="btn btn-warning">Edit</a>
+
+<a asp-action="Index"
+   class="btn btn-secondary">Back</a>
