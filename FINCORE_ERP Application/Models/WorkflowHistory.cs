@@ -8,24 +8,22 @@ namespace FINCORE_ERP_Application.Models
         [Key]
         public int workflow_history_id { get; set; }
 
-        [ForeignKey("workflow_definition_id")]
         public int? workflow_definition_id { get; set; }
+
         public WorkflowDefinition? WorkflowDefinition { get; set; }
 
-        
         public string entity_name { get; set; }
+
         public int entity_id { get; set; }
 
-
-        [ForeignKey("workflow_step_id")]
         public int? workflow_step_id { get; set; }
-        public WorkflowStep? WorkflowStep { get; set; }
 
+        public WorkflowStep? WorkflowStep { get; set; }
 
         public string action { get; set; }
 
-        [ForeignKey("action_by")]
         public int? action_by { get; set; }
+
         public User? ActionUser { get; set; }
 
         public DateTime action_date { get; set; } = DateTime.Now;
@@ -34,19 +32,12 @@ namespace FINCORE_ERP_Application.Models
 
         public DateTime created_at { get; set; } = DateTime.Now;
 
-        [ForeignKey("user_id")]
         public int? created_by { get; set; }
 
         public DateTime? modified_at { get; set; } = DateTime.Now;
 
-        [ForeignKey("user_id")]
         public int? modified_by { get; set; }
 
         public User User { get; set; }
-
-
-
-
-
     }
 }
