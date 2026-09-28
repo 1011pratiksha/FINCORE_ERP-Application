@@ -16,6 +16,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 
+builder.Services.AddScoped<IPurchaseOrderService, PurchaseOrderService>();
+
 //builder.Services
 //    .AddAuthentication()
 //    .AddCookie("GoogleCookie")

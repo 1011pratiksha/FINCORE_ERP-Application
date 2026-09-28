@@ -2,7 +2,6 @@
 using FINCORE_ERP_Application.Models;
 
 
-
 namespace FINCORE_ERP_Application.Data
 {
     public class ApplicationDbContext : DbContext
@@ -38,6 +37,8 @@ namespace FINCORE_ERP_Application.Data
         public DbSet<VendorSelection> VendorSelections { get; set; }
         public DbSet<PurchaseRequisition> PurchaseRequisitions { get; set; }
         public DbSet<PurchaseRequisitionItem> PurchaseRequisitionItems { get; set; }
+        public DbSet<PurchaseOrder> PurchaseOrders { get; set; }
+        public DbSet<PurchaseOrderItem> PurchaseOrderItems { get; set; }
         public DbSet<VendorCategory> VendorCategories { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<APInvoice> APInvoices { get; set; }
@@ -63,6 +64,9 @@ namespace FINCORE_ERP_Application.Data
         public DbSet<Budget> Budgets { get; set; }
 
         public DbSet<BudgetLine> BudgetLines { get; set; }
+
+
+
 
 
         protected override void OnModelCreating(ModelBuilder builder)
