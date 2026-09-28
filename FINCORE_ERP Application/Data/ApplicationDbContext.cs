@@ -211,16 +211,12 @@ namespace FINCORE_ERP_Application.Data
 
           
             modelBuilder.Entity<ApprovalLog>()
-                .HasOne(a => a.WorkflowDefinition)
+                .HasOne(a => a.WorkOrder)
                 .WithMany()
-                .HasForeignKey(a => a.workflow_definition_id)
+                .HasForeignKey(a => a.WorkOrderId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<ApprovalLog>()
-                .HasOne(a => a.WorkflowStep)
-                .WithMany()
-                .HasForeignKey(a => a.workflow_step_id)
-                .OnDelete(DeleteBehavior.Restrict);
+            
 
             modelBuilder.Entity<ApprovalLog>()
                 .HasOne(a => a.ApproverUser)
@@ -240,77 +236,7 @@ namespace FINCORE_ERP_Application.Data
                 .HasForeignKey(a => a.modified_by)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<WorkflowDefinition>()
-                .HasMany(w => w.WorkflowSteps)
-                .WithOne(s => s.WorkflowDefinition)
-                .HasForeignKey(s => s.workflow_definition_id)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<WorkflowDefinition>()
-                .HasOne(w => w.User)
-                .WithMany()
-                .HasForeignKey(w => w.created_by)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<WorkflowDefinition>()
-                .HasOne<User>()
-                .WithMany()
-                .HasForeignKey(w => w.updated_by)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<WorkflowStep>()
-                .HasOne(s => s.WorkflowDefinition)
-                .WithMany(w => w.WorkflowSteps)
-                .HasForeignKey(s => s.workflow_definition_id)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<WorkflowStep>()
-                .HasOne(s => s.ApproverRole)
-                .WithMany()
-                .HasForeignKey(s => s.approver_role_id)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<WorkflowStep>()
-                .HasOne(s => s.User)
-                .WithMany()
-                .HasForeignKey(s => s.created_by)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<WorkflowStep>()
-                .HasOne<User>()
-                .WithMany()
-                .HasForeignKey(s => s.modified_by)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<WorkflowHistory>()
-                .HasOne(h => h.WorkflowDefinition)
-                .WithMany()
-                .HasForeignKey(h => h.workflow_definition_id)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<WorkflowHistory>()
-                .HasOne(h => h.WorkflowStep)
-                .WithMany()
-                .HasForeignKey(h => h.workflow_step_id)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<WorkflowHistory>()
-                .HasOne(h => h.ActionUser)
-                .WithMany()
-                .HasForeignKey(h => h.action_by)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<WorkflowHistory>()
-                .HasOne(h => h.User)
-                .WithMany()
-                .HasForeignKey(h => h.created_by)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<WorkflowHistory>()
-                .HasOne<User>()
-                .WithMany()
-                .HasForeignKey(h => h.modified_by)
-                .OnDelete(DeleteBehavior.Restrict);
+            
 
             // One Vendor has many APInvoices
             modelBuilder.Entity<APInvoice>()
@@ -333,11 +259,11 @@ namespace FINCORE_ERP_Application.Data
                 .HasForeignKey(a => a.ApprovedBy)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // One Payment has many APInvoices
-            modelBuilder.Entity<APInvoice>()
-                .HasOne(a => a.Payments)
-                .WithMany()
-                .HasForeignKey(a => a.APInvoiceId)
+            // One APInvoice has many Payments
+            modelBuilder.Entity<Payment>()
+                .HasOne(p => p.APInvoice)
+                .WithMany(a => a.Payments)
+                .HasForeignKey(p => p.APInvoiceId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             // One GRN has many APInvoices

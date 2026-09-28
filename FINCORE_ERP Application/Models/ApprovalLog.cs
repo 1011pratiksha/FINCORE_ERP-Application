@@ -8,17 +8,15 @@ namespace FINCORE_ERP_Application.Models
         [Key]
         public int approval_log_id { get; set; }
 
-        public int workflow_definition_id { get; set; }
+        public int WorkOrderId { get; set; }
 
-        public WorkflowDefinition? WorkflowDefinition { get; set; }
+        public WorkOrder? WorkOrder { get; set; }
 
         public string entity_name { get; set; }
 
         public int entity_id { get; set; }
 
-        public int workflow_step_id { get; set; }
-
-        public WorkflowStep? WorkflowStep { get; set; }
+       
 
         public int approver_user_id { get; set; }
 
