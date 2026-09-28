@@ -20,15 +20,13 @@ namespace FINCORE_ERP_Application.Models
 
         public DateTime created_at { get; set; } = DateTime.Now;
 
-        [ForeignKey("user_id")]
         public int? created_by { get; set; }
 
         public DateTime? updated_at { get; set; }
 
-        [ForeignKey("user_id")]
         public int? updated_by { get; set; }
-        public User User { get; set; }
 
+        public User User { get; set; }
 
         // Navigation Property
         public ICollection<WorkflowStep>? WorkflowSteps { get; set; }

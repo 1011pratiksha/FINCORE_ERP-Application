@@ -1,0 +1,77 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container-fluid py-4">
+    <h1 class="h3 mb-4 text-gray-800">🛡️ System Administration Console</h1>
+
+    <!-- KPI Row -->
+    <div class="row">
+        <div class="col-md-3 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total System Users</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">14 Active</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Active Roles Configured</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">7 Roles</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Database Connectivity</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">SQL Server 2022 Online</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Sync Actions</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">0 Gateway Issues</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions Framework Layout -->
+    <div class="row mt-3">
+        <div class="col-lg-6">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 bg-light"><h6 class="m-0 font-weight-bold text-primary">Identity & Access Control Operations</h6></div>
+                <div class="card-body">
+                    <p>Manage system identity tables, allocate access controls, and map granular platform privileges.</p>
+                    <div class="d-grid gap-2 d-md-block">
+                        <a href="/Authentication/UserList" class="btn btn-primary btn-sm me-2">👥 View User Registries</a>
+                        <a href="/Authentication/RoleManagement" class="btn btn-outline-secondary btn-sm">🔑 Modify Permissions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 bg-light"><h6 class="m-0 font-weight-bold text-success">Hierarchical Node Structures</h6></div>
+                <div class="card-body">
+                    <p>Alter companies configurations, operational branches, specialized cost centers, or product divisions.</p>
+                    <div class="d-grid gap-2 d-md-block">
+                        <a href="/Dashboard/CompanyList" class="btn btn-success btn-sm me-2">🏢 Company Profiles</a>
+                        <a href="/Dashboard/BranchList" class="btn btn-outline-success btn-sm">📍 Branch Frameworks</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
