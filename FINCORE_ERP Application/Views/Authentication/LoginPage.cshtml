@@ -3,3 +3,65 @@
 *@
 @{
 }
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sign In</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+</head>
+
+<body>
+
+    <div class="container min-vh-100 d-flex justify-content-center align-items-center">
+
+        <div class="card shadow p-4">
+
+            <div class="card-body">
+
+                <h3 class="text-center mb-4">
+                    FINCORE Login
+                </h3>
+
+                <span class="text-success">
+                    @TempData["success"]
+                </span>
+
+                <form asp-controller="Authentication" asp-action="SignIn" method="post">
+
+                    <div class="mb-3">
+
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" name="Email" placeholder="Enter Email Id" required />
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">Password</label>
+
+                        <input type="password" class="form-control" name="Password" placeholder="Enter Password" required />
+                    </div>
+                    <button type="submit"class="btn btn-primary w-100">Sign In</button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -23,7 +23,7 @@ namespace FINCORE_ERP_Application.Models
         [ForeignKey("Employee")]
         public int EmployeeId { get; set; }
 
-        public Employee Employee { get; set; }
+       // public Employee Employee { get; set; }
 
 
         // Assignment Information
