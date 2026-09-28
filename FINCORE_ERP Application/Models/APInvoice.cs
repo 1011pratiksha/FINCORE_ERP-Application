@@ -18,9 +18,9 @@ namespace FINCORE_ERP_Application.Models
         public int? VendorId { get; set; }
         public Vendor Vendor { get; set; }
 
-        //[ForeignKey("PurchaseOrder")]
-        //public int? PurchaseOrderId { get; set; }
-        //public PurchaseOrder PurchaseOrder { get; set; }
+        [ForeignKey("PurchaseOrder")]
+        public int? PurchaseOrderId { get; set; }
+        public PurchaseOrder PurchaseOrder { get; set; }
 
         //[ForeignKey("GRN")]
         //public int? GRNId { get; set; }
@@ -57,7 +57,6 @@ namespace FINCORE_ERP_Application.Models
 
         public DateTime CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
-
         public List<Payment> Payments { get; set; } = new();
     }
 }
