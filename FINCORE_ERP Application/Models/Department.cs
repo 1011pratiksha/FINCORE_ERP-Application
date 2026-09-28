@@ -27,5 +27,10 @@ namespace FINCORE_ERP_Application.Models
         public User User { get; set; }
 
         public DateTime? modified_at { get; set; }
+
+        public List<CapexRequest> capexRequests { get; set; }
+
+
+
     }
 }

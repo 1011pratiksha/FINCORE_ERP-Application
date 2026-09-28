@@ -26,9 +26,9 @@ namespace FINCORE_ERP_Application.Services
                 {
                     return "Admin";
                 }
-                if (data.role.role_name.Equals("Employee"))
+                if (data.role.role_name.Equals("Vendor"))
                 {
-                    return "Employee";
+                    return "Vendor";
                 }
 
                 
