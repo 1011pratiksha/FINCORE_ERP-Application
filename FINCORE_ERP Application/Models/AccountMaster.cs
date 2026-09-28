@@ -12,18 +12,17 @@ namespace FINCORE_ERP_Application.Models
         [StringLength(30)]
         public string AccountCode { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Account Name is required")]
         [StringLength(60)]
         public string AccountName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Account Type is required")]
         [StringLength(30)]
         public string AccountType { get; set; }
 
         [Required]
         public byte IsActive { get; set; }
-
-        public DateTime? CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
 
         [Required]
@@ -31,13 +30,18 @@ namespace FINCORE_ERP_Application.Models
         public int CreatedBy { get; set; }
         public User CreatedByUser { get; set; }
 
-        [Required]
         [ForeignKey("ModifiedByUser")]
-        public int ModifiedBy { get; set; }
+        public int? ModifiedBy { get; set; }
         public User ModifiedByUser { get; set; }
 
         // Navigation Properties
         public List<RevenueEntry> RevenueEntries { get; set; }
+
         //public List<JournalEntry> JournalEntries { get; set; }
+
+
+
+        public List<JournalEntry> JournalEntries { get; set; } = new();
+
     }
 }

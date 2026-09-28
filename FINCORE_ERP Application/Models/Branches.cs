@@ -11,7 +11,7 @@ namespace FINCORE_ERP_Application.Models
         public int branch_id { get; set; }
 
        [ ForeignKey("company_id")]
-        public int company_id { get; set; }
+        public int? company_id { get; set; }
         public Company Companies { get; set; }
 
         public int branch_code { get; set; }
@@ -30,7 +30,7 @@ namespace FINCORE_ERP_Application.Models
         public DateTime created_at { get; set; }
 
          [ForeignKey("user_id")]
-        public int created_by { get; set; }
+        public int? created_by { get; set; }
           public User User { get; set; }
 
         public DateTime? modified_at { get; set; }
