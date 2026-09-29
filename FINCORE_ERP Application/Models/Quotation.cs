@@ -39,6 +39,6 @@ namespace FINCORE_ERP_Application.Models
 
         public List<QuotationItem> QuotationItems { get; set; }
         public List<VendorSelection> VendorSelections { get; set; }
-        //public List<PurchaseOrder> PurchaseOrders { get; set; }
+        public List<PurchaseOrder> PurchaseOrders { get; set; }
     }
 }

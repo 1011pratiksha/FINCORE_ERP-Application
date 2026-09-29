@@ -1,0 +1,62 @@
+﻿@model FINCORE_ERP_Application.Models.Vendor
+
+<h2>Add Vendor</h2>
+
+<form asp-action="Create" method="post">
+
+    <div class="mb-3">
+        <label>Vendor Code</label>
+        <input asp-for="VendorCode" class="form-control" />
+        <span asp-validation-for="VendorCode" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Vendor Category</label>
+
+        <select asp-for="VendorCategoryId"
+                class="form-control"
+                asp-items="@(new SelectList(ViewBag.VendorCategories, "VendorCategoryId", "CategoryName"))">
+            <option value="">Select Category</option>
+        </select>
+
+        <span asp-validation-for="VendorCategoryId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Bank Account</label>
+        <input asp-for="BankAccount" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>PAN</label>
+        <input asp-for="PAN" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Performance Score</label>
+        <input asp-for="PerformanceScore" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Verified</label>
+
+        <select asp-for="IsVerified" class="form-control">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Active</label>
+
+        <select asp-for="IsActive" class="form-control">
+            <option value="1">Active</option>
+            <option value="0">Inactive</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+
+</form>

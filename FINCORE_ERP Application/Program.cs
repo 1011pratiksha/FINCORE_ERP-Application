@@ -26,6 +26,12 @@ builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IRevenueEntryService, RevenueEntryService>();
 
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+builder.Services.AddScoped<IUserManagementService, UserManagementService>();
+builder.Services.AddSession();
+
+builder.Services.AddScoped<IVendorService,VendorService>();
+
+builder.Services.AddScoped<IPurchaseOrderService, PurchaseOrderService>();
 
 //builder.Services
 //    .AddAuthentication()
@@ -57,6 +63,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
+app.UseSession();
 
 app.UseAuthorization();
 
@@ -64,7 +71,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+    pattern: "{controller=Authentication}/{action=LoginPage}/{id?}")
     .WithStaticAssets();
 
 
