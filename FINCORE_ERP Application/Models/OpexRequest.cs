@@ -36,6 +36,14 @@ namespace FINCORE_ERP_Application.Models
         public int? ApprovedBy { get; set; }
         public User ApprovedByUser { get; set; }
 
+        [ForeignKey("ApprovedByUser")]
+        public int? ApprovedBy { get; set; }
+        public User ApprovedByUser { get; set; }
+
+        [ForeignKey("ModifiedByUser")]
+        public int? ModifiedBy { get; set; }
+        public User ModifiedByUser { get; set; }
+
         public DateTime? ApprovedDate { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
