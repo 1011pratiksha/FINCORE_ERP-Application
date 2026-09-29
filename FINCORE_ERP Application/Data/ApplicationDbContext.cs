@@ -21,8 +21,8 @@ namespace FINCORE_ERP_Application.Data
         public DbSet<ProfitCenter> ProfitCenter { get; set; }
         public DbSet<Role> Role { get; set; }
         public DbSet<User> User { get; set; }
-       // public DbSet<WorkflowDefinition> WorkflowDefinition { get; set; }
-       // public DbSet<WorkflowHistory> WorkflowHistory { get; set; }
+        //public DbSet<WorkflowDefinition> WorkflowDefinition { get; set; }
+        //public DbSet<WorkflowHistory> WorkflowHistory { get; set; }
         //public DbSet<WorkflowStep> WorkflowStep { get; set; }
 
         public DbSet<RFQVendor> RFQVendors { get; set; }
