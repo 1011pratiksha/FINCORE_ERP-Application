@@ -1,4 +1,5 @@
 ﻿using FINCORE_ERP_Application.Interfaces;
+using FINCORE_ERP_Application.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FINCORE_ERP_Application.Controllers
@@ -6,16 +7,19 @@ namespace FINCORE_ERP_Application.Controllers
     public class VendorController : Controller
     {
         IVendorService service;
+
         public VendorController(IVendorService vendorService)
         {
             service = vendorService;
         }
 
-        public async Task <IActionResult> Index()
+        public async Task<IActionResult> Index()
         {
-             await service.getVendor();
-            return View();
+            var data = await service.GetVendor();
+
+            return View(data);
         }
+
         public async Task<IActionResult> Create()
         {
             ViewBag.VendorCategories = await service.GetVendorCategories();
@@ -40,6 +44,7 @@ namespace FINCORE_ERP_Application.Controllers
 
             return RedirectToAction("Index");
         }
+
         public async Task<IActionResult> Details(int id)
         {
             var vendor = await service.GetVendorById(id);
@@ -122,8 +127,10 @@ namespace FINCORE_ERP_Application.Controllers
         public async Task<IActionResult> History(int id)
         {
             var vendor = await service.GetVendorById(id);
+
             return View(vendor);
         }
+
         public async Task<IActionResult> Selections()
         {
             var data = await service.GetVendorSelections();
@@ -152,7 +159,3 @@ namespace FINCORE_ERP_Application.Controllers
         }
     }
 }
-
-    }
-}
-
