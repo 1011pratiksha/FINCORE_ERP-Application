@@ -28,18 +28,12 @@ namespace FINCORE_ERP_Application.Models
         public byte IsActive { get; set; }
 
         [Required]
-        [ForeignKey("CreatedByUser")]
         public int CreatedBy { get; set; }
-
-        public User CreatedByUser { get; set; }
 
         [Required]
         public DateTime CreatedAt { get; set; }
 
-        [ForeignKey("ModifiedByUser")]
         public int? ModifiedBy { get; set; }
-
-        public User ModifiedByUser { get; set; }
 
         public DateTime? ModifiedAt { get; set; }
 
