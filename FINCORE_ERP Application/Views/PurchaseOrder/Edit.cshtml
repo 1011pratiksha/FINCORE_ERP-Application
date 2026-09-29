@@ -1,0 +1,36 @@
+﻿@model PurchaseOrder
+
+<h2>Edit Purchase Order</h2>
+
+<form asp-action="Edit" method="post">
+
+    <input type="hidden" asp-for="PurchaseOrderId" />
+
+    Vendor ID<input type="number" asp-for="VendorId" class="form-control" placeholder="Vendor ID" /> <br /><br />
+
+    Quotation ID<input type="number" asp-for="QuotationId" class="form-control" placeholder="Quotation ID" /> <br /><br />
+
+    PO Number<input type="text" asp-for="PONumber" class="form-control" placeholder="PO Number" /> <br /><br />
+
+    Total Amount<input type="number" asp-for="TotalAmount" class="form-control" placeholder="Total Amount" /> <br /><br />
+
+    Status<input type="text" asp-for="Status" class="form-control" placeholder="Status" /> <br /><br />
+
+    IsActive<select asp-for="IsActive" class="form-control">
+        <option value="1">Active</option>
+        <option value="0">Inactive</option>
+</select> <br /><br />
+    
+Created By<input type="text" asp-for="CreatedBy" class="form-control" placeholder="Created By" /> <br /><br />
+    
+Created At<input type="datetime-local" asp-for="CreatedAt" class="form-control" /> <br /><br />
+    
+Modified By<input type="text" asp-for="ModifiedBy" class="form-control" placeholder="Modified By" /> <br /><br />
+    
+Modified At<input type="datetime-local" asp-for="ModifiedAt" class="form-control" /> <br /><br />
+
+    <button type="submit" class="btn btn-success"> Update</button>
+
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+
+</form>

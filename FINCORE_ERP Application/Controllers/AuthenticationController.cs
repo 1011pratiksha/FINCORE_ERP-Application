@@ -42,20 +42,11 @@ namespace FINCORE_ERP_Application.Controllers
 
             switch (role)
             {
-                case "Administrator":
-                    return View("AdminDashboard");
-                case "Finance Manager":
-                    return View("FinanceManagerDashboard");
-                case "Procurement Manager":
-                    return View("ProcurementManagerDashboard");
-                case "Department Head":
-                    return View("DepartmentHeadDashboard");
-                case "Employee":
-                    return View("EmployeeDashboard");
-                case "Auditor":
-                    return View("AuditorDashboard");
-                case "CFO":
-                    return View("CFODashboard");
+                case "Admin":
+                    return RedirectToAction("AdminDashboard", "Dashboard");
+                case "Vendor":
+                    return RedirectToAction("VendorDashBoard", "Dashboard"); 
+               
                 default:
                     TempData["Error"] = "Unauthorized Role Access Profile.";
                     return RedirectToAction("LoginPage", "Authentication");

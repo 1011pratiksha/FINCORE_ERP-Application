@@ -5,53 +5,53 @@ namespace FINCORE_ERP_Application.Models
 {
     public class PurchaseOrderItem
     {
-            [Key]
-            public int POItemId { get; set; }
+        [Key]
+        public int POItemId { get; set; }
 
-            [Required]
-            [ForeignKey("PurchaseOrder")]
-            public int POId { get; set; }
-            public PurchaseOrder PurchaseOrder { get; set; }
+        [Required]
+        public int PurchaseOrderId { get; set; }
 
-            [Required]
-            [ForeignKey("PurchaseRequisitionItem")]
-            public int PRItemId { get; set; }
-            public PurchaseRequisitionItem PurchaseRequisitionItem { get; set; }
+        public PurchaseOrder PurchaseOrder { get; set; }
 
-            [Required]
-            [StringLength(40)]
-            public string ItemName { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string ItemName { get; set; }
 
-            [StringLength(500)]
-            public string ItemDescription { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string ItemType { get; set; }
 
-            [Required]
-            [Column(TypeName = "decimal(18,2)")]
-            public decimal Quantity { get; set; }
+        [Required]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal UnitPrice { get; set; }
 
-            [Required]
-            [StringLength(20)]
-            public string UnitOfMaterial { get; set; }
+        [Column(TypeName = "decimal(5,2)")]
+        public decimal Tax { get; set; }
 
-            [Required]
-            [Column(TypeName = "decimal(18,2)")]
-            public decimal UnitPrice { get; set; }
+        [Column(TypeName = "decimal(5,2)")]
+        public decimal Discount { get; set; }
 
-            [Required]
-            [Column(TypeName = "decimal(5,2)")]
-            public decimal TaxPercentage { get; set; }
+        [Required]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal Qty { get; set; }
 
-            [Required]
-            [Column(TypeName = "decimal(18,2)")]
-            public decimal TaxAmount { get; set; }
+        public byte IsActive { get; set; }
 
-            [Required]
-            [Column(TypeName = "decimal(18,2)")]
-            public decimal LineTotal { get; set; }
+        [Required]
+        public int CreatedBy { get; set; }
 
-            [Required]
-            [StringLength(10)]
-            public string ItemStatus { get; set; }
-        
+        [Required]
+        public DateTime CreatedAt { get; set; }
+
+        public int? ModifiedBy { get; set; }
+
+        public DateTime? ModifiedAt { get; set; }
+
+        [Required]
+        public int QuotationItemId { get; set; }
+
+        [Required]
+        [StringLength(30)]
+        public string Status { get; set; }
     }
 }

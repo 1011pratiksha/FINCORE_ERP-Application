@@ -39,5 +39,7 @@ namespace FINCORE_ERP_Application.Models
         public DateTime? modified_at { get; set; }
 
         public int? modified_by { get; set; }
+        public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
+
     }
 }

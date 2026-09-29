@@ -1,0 +1,30 @@
+﻿@model PurchaseOrder
+
+<h2>Create Purchase Order</h2>
+
+<form asp-action="Create" method="post">
+
+    Vendor ID<input type="number" asp-for="VendorId" class="form-control" placeholder="Vendor ID" /> <br /><br />
+
+    Quotation ID<input type="number" asp-for="QuotationId" class="form-control" placeholder="Quotation ID" /> <br /><br />
+
+    PO Number<input type="text" asp-for="PONumber" class="form-control" placeholder="PO Number" /> <br /><br />
+
+    Total Amount<input type="number" asp-for="TotalAmount" class="form-control" placeholder="Total Amount" /> <br /><br />
+
+    Status<input type="text" asp-for="Status" class="form-control" placeholder="Status" /> <br /><br />
+
+    IsActive<select asp-for="IsActive" class="form-control">
+        <option value="1">Active</option>
+        <option value="0">Inactive</option>
+    </select> <br /><br />
+    
+    Created By<input type="text" asp-for="CreatedBy" class="form-control" placeholder="Created By" /> <br /><br />
+    
+    CreatedAt<input type="datetime-local" asp-for="CreatedAt" class="form-control" /> <br /><br />
+
+    <button type="submit" class="btn btn-success">Save</button> 
+
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+
+</form>

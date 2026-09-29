@@ -6,61 +6,38 @@ namespace FINCORE_ERP_Application.Models
     public class PurchaseOrder
     {
         [Key]
-        public int POId { get; set; }
+        public int PurchaseOrderId { get; set; }
 
         [Required]
-        [StringLength(30)]
-        public string POCode { get; set; }
-
-        [ForeignKey("PurchaseRequisition")]
-        public int? PurchaseRequisitionId { get; set; }
-        public PurchaseRequisition PurchaseRequisition { get; set; }
+        public int VendorId { get; set; }
 
         [Required]
-        [ForeignKey("Quotation")]
         public int QuotationId { get; set; }
-        public Quotation Quotation { get; set; }
-
-        [ForeignKey("RequestedByUser")]
-        public int? RequestedBy { get; set; }
-        public User RequestedByUser { get; set; }
-
-        public DateTime? RequiredTillDate { get; set; }
-        public DateTime? OrderDate { get; set; }
 
         [Required]
         [StringLength(30)]
-        public string ApprovalStatus { get; set; }
+        public string PONumber { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
-        public decimal Amount { get; set; }
-
-        [ForeignKey("ApprovedByUser")]
-        public int? ApprovedBy { get; set; }
-        public User ApprovedByUser { get; set; }
-
-        public byte? IsActive { get; set; }
-        public DateTime? ApprovedAt { get; set; }
-        public DateTime? CreatedAt { get; set; }
+        public decimal TotalAmount { get; set; }
 
         [Required]
-        public DateTime ModifiedAt { get; set; }
+        [StringLength(30)]
+        public string Status { get; set; }
+
+        public byte IsActive { get; set; }
 
         [Required]
-        [ForeignKey("CreatedByUser")]
         public int CreatedBy { get; set; }
-        public User CreatedByUser { get; set; }
 
         [Required]
-        [ForeignKey("ModifiedByUser")]
-        public int ModifiedBy { get; set; }
-        public User ModifiedByUser { get; set; }
+        public DateTime CreatedAt { get; set; }
 
-        // Navigation Properties
-        //public List<PurchaseOrderItem> PurchaseOrderItems { get; set; }
-        //public List<GRN> GRNs { get; set; }
-        //public List<Asset> Assets { get; set; }
-        //public List<APInvoice> APInvoices { get; set; }
+        public int? ModifiedBy { get; set; }
+
+        public DateTime? ModifiedAt { get; set; }
+
+        public List<PurchaseOrderItem> PurchaseOrderItems { get; set; }
+            = new List<PurchaseOrderItem>();
     }
 }
-

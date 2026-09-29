@@ -51,7 +51,7 @@ namespace FINCORE_ERP_Application.Models
             [Required]
             [ForeignKey("CreatedByEmployee")]
             public int CreatedBy { get; set; }
-            public Employee CreatedByEmployee { get; set; }
+          //  public Employee CreatedByEmployee { get; set; }
 
             //// Navigation Properties
             //public List<Asset> Assets { get; set; }
