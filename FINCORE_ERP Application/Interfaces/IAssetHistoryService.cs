@@ -1,6 +1,6 @@
 ﻿using FINCORE_ERP_Application.Models;
 
-namespace FINCORE_ERP_Application.Interfaces
+namespace FINCORE_ERP_Application.Interface
 {
     public interface IAssetHistoryService
     {

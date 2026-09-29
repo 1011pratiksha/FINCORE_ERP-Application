@@ -1,5 +1,5 @@
 ﻿using FINCORE_ERP_Application.Data;
-using FINCORE_ERP_Application.Interfaces;
+using FINCORE_ERP_Application.Interface;
 using FINCORE_ERP_Application.Models;
 using Microsoft.EntityFrameworkCore;
 
