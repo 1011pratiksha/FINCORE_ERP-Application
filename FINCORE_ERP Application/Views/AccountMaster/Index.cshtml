@@ -1,0 +1,61 @@
+﻿@model List<FINCORE_ERP_Application.Models.AccountMaster>
+
+@{
+    ViewData["Title"] = "Account Master";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Account Master</h3>
+        <a asp-action="AddAccount" class="btn btn-primary">+ Add Account</a>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Account Code</th>
+                <th>Account Name</th>
+                <th>Account Type</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var account in Model)
+            {
+                <tr>
+                    <td>@account.AccountCode</td>
+                    <td>@account.AccountName</td>
+                    <td>@account.AccountType</td>
+                    <td>
+                        @if (account.IsActive == 1)
+                        {
+                            <span class="badge bg-success">Active</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Inactive</span>
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="UpdateAccount"
+                           asp-route-id="@account.AccountId"
+                           class="btn btn-sm btn-warning">
+                            Edit
+                        </a>
+
+                        <a asp-action="DeleteAccount"
+                           asp-route-id="@account.AccountId"
+                           class="btn btn-sm btn-danger"
+                           onclick="return confirm('Are you sure you want to delete this account?');">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
