@@ -13,12 +13,16 @@ namespace FINCORE_ERP_Application.Controllers
             service = vendorService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task <IActionResult> Index()
         {
-            var data = await service.GetVendor();
-
-            return View(data);
+            await service.GetVendor();
+            return View();
         }
+        //public async Task<IActionResult> Index()
+        //{
+        //    var data = await service.GetVendor();
+        //    return View(data);
+        //}
 
         public async Task<IActionResult> Create()
         {
@@ -127,9 +131,11 @@ namespace FINCORE_ERP_Application.Controllers
         public async Task<IActionResult> History(int id)
         {
             var vendor = await service.GetVendorById(id);
-
             return View(vendor);
         }
+
+        
+
 
         public async Task<IActionResult> Selections()
         {
@@ -159,3 +165,7 @@ namespace FINCORE_ERP_Application.Controllers
         }
     }
 }
+
+
+
+
