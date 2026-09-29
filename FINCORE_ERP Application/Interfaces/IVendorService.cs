@@ -1,12 +1,6 @@
 ﻿using FINCORE_ERP_Application.Models;
 
 namespace FINCORE_ERP_Application.Interfaces
-{
-    public interface IVendorService
-    {
-using FINCORE_ERP_Application.Models;
-
-namespace FINCORE_ERP_Application.Interfaces
     {
         public interface IVendorService
         {
