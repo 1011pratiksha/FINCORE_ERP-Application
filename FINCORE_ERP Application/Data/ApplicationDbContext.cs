@@ -476,6 +476,130 @@ namespace FINCORE_ERP_Application.Data
                 .WithMany()
                 .HasForeignKey(x => x.SelectedBy)
                 .OnDelete(DeleteBehavior.Restrict);
+
+
+            modelBuilder.Entity<Budget>(u =>
+            {
+                u.HasOne(x => x.ApprovedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.ApprovedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+
+                u.HasOne(x => x.ModifiedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.ModifiedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+
+                u.HasOne(x => x.CreatedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.CreatedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            modelBuilder.Entity<BudgetLine>(u =>
+            {
+                u.HasOne(x => x.ApprovedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.ApprovedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+
+                u.HasOne(x => x.CreatedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.CreatedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            modelBuilder.Entity<BudgetCategory>(u =>
+            {
+                u.HasOne(x => x.ApprovedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.ApprovedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+
+                u.HasOne(x => x.CreatedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.CreatedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            modelBuilder.Entity<CapexRequest>(u =>
+            {
+                u.HasOne(x => x.ApprovedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.ApprovedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+
+                u.HasOne(x => x.ModifiedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.ModifiedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+
+                u.HasOne(x => x.CreatedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.CreatedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+
+                u.HasOne(x => x.RequestByUser)
+               .WithMany()
+               .HasForeignKey(x => x.RequestedBy)
+               .OnDelete(DeleteBehavior.Restrict);
+            });
+
+
+            modelBuilder.Entity<OpexRequest>(u =>
+            {
+                u.HasOne(x => x.ApprovedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.ApprovedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+
+                u.HasOne(x => x.ModifiedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.ModifiedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+
+                u.HasOne(x => x.CreatedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.CreatedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+
+                u.HasOne(x => x.RequestByUser)
+               .WithMany()
+               .HasForeignKey(x => x.RequestedBy)
+               .OnDelete(DeleteBehavior.Restrict);
+            });
+
+
+            modelBuilder.Entity<ExpenseClaim>(u =>
+            {
+                u.HasOne(x => x.ApprovedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.ApprovedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+
+                u.HasOne(x => x.ModifiedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.ModifiedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+
+                u.HasOne(x => x.CreatedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.CreatedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+
+                u.HasOne(x => x.ClaimByUser)
+               .WithMany()
+               .HasForeignKey(x => x.ClaimBy)
+               .OnDelete(DeleteBehavior.Restrict);
+            });
+
+
+
+
+
+
+
+
         }
     }
 }
