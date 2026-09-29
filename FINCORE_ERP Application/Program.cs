@@ -1,4 +1,5 @@
 using FINCORE_ERP_Application.Data;
+using FINCORE_ERP_Application.Interface;
 using FINCORE_ERP_Application.Interfaces;
 using FINCORE_ERP_Application.Services;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,16 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("dbconn")
     ));
+
+builder.Services.AddScoped<IAssetService, AssetService>();
+builder.Services.AddScoped<IAssetAssignmentService, AssetAssignmentService>();
+builder.Services.AddScoped<IARInvoiceService, ARInvoiceService>();
+builder.Services.AddScoped<IAssetDepreciationService, AssetDepreciationService>();
+builder.Services.AddScoped<IAssetDisposalService, AssetDisposalService>();  
+builder.Services.AddScoped<IAssetHistoryService, AssetHistoryService>();    
+builder.Services.AddScoped<IAssetLocationService, AssetLocationService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IRevenueEntryService, RevenueEntryService>();
 
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 

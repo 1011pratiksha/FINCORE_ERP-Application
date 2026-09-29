@@ -56,6 +56,7 @@ namespace FINCORE_ERP_Application.Models
         public List<RFQVendor> RFQVendors { get; set; }
         public List<Quotation> Quotations { get; set; }
         public List<VendorSelection> VendorSelections { get; set; }
+       
 
         public List<GRN> GRNs { get; set; }
         public List<Asset> Assets { get; set; }

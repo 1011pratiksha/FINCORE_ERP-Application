@@ -53,6 +53,6 @@ namespace FINCORE_ERP_Application.Models
 
         // Navigation Properties
 
-       // public List<Payment> Payments { get; set; }
+        public List<Payment> Payments { get; set; }
     }
 }
