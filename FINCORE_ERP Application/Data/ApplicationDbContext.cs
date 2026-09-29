@@ -21,6 +21,7 @@ namespace FINCORE_ERP_Application.Data
         public DbSet<ProfitCenter> ProfitCenter { get; set; }
         public DbSet<Role> Role { get; set; }
         public DbSet<User> User { get; set; }
+
         //public DbSet<WorkflowDefinition> WorkflowDefinition { get; set; }
         //public DbSet<WorkflowHistory> WorkflowHistory { get; set; }
         //public DbSet<WorkflowStep> WorkflowStep { get; set; }
@@ -60,15 +61,10 @@ namespace FINCORE_ERP_Application.Data
 
         public DbSet<BudgetLine> BudgetLines { get; set; }
 
-       
-
-
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
 
 
             modelBuilder.Entity<User>()
@@ -88,7 +84,6 @@ namespace FINCORE_ERP_Application.Data
                 .WithMany()
                 .HasForeignKey(u => u.modified_by)
                 .OnDelete(DeleteBehavior.Restrict);
-
 
 
             modelBuilder.Entity<Company>()
@@ -144,8 +139,6 @@ namespace FINCORE_ERP_Application.Data
                 .WithMany()
                 .HasForeignKey(d => d.modified_by)
                 .OnDelete(DeleteBehavior.Restrict);
-
-
 
 
             modelBuilder.Entity<CostCenter>()
@@ -210,14 +203,11 @@ namespace FINCORE_ERP_Application.Data
                 .OnDelete(DeleteBehavior.Restrict);
 
 
-
-
             modelBuilder.Entity<ApprovalLog>()
                 .HasOne(a => a.WorkOrder)
                 .WithMany()
                 .HasForeignKey(a => a.WorkOrderId)
                 .OnDelete(DeleteBehavior.Restrict);
-
 
 
             modelBuilder.Entity<ApprovalLog>()
@@ -237,7 +227,6 @@ namespace FINCORE_ERP_Application.Data
                 .WithMany()
                 .HasForeignKey(a => a.modified_by)
                 .OnDelete(DeleteBehavior.Restrict);
-
 
 
             // One Vendor has many APInvoices
@@ -341,151 +330,152 @@ namespace FINCORE_ERP_Application.Data
             //modelBuilder.Entity<Payment>()
             //    .Property(x => x.Amount)
             //    .HasPrecision(18, 2);
+
             modelBuilder.Entity<BudgetLine>(u =>
-    {
-        u.HasOne(x => x.BudgetCategory)
-        .WithMany(x => x.BudgetLines)
-        .HasForeignKey(x => x.BudgetCategoryId)
-        .OnDelete(DeleteBehavior.Restrict);
+            {
+                u.HasOne(x => x.BudgetCategory)
+                    .WithMany(x => x.BudgetLines)
+                    .HasForeignKey(x => x.BudgetCategoryId)
+                    .OnDelete(DeleteBehavior.Restrict);
 
-        u.HasOne(x => x.Budget)
-                .WithMany(x => x.BudgetLines)
-                .HasForeignKey(x => x.BudgetId)
-                .OnDelete(DeleteBehavior.Restrict);
+                u.HasOne(x => x.Budget)
+                    .WithMany(x => x.BudgetLines)
+                    .HasForeignKey(x => x.BudgetId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
 
-
-    });
 
             modelBuilder.Entity<OpexRequest>(u =>
-    {
-        u.HasOne(x => x.BudgetLine)
-        .WithMany(x => x.OpexRequests)
-        .HasForeignKey(x => x.OpexRequestId)
-        .OnDelete(DeleteBehavior.Restrict);
-    });
+            {
+                u.HasOne(x => x.BudgetLine)
+                    .WithMany(x => x.OpexRequests)
+                    .HasForeignKey(x => x.OpexRequestId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
 
 
             modelBuilder.Entity<CapexRequest>(u =>
-    {
-        u.HasOne(x => x.BudgetLine)
-        .WithMany(x => x.CapexRequests)
-        .HasForeignKey(x => x.CapexRequestId)
-        .OnDelete(DeleteBehavior.Restrict);
-    });
+            {
+                u.HasOne(x => x.BudgetLine)
+                    .WithMany(x => x.CapexRequests)
+                    .HasForeignKey(x => x.CapexRequestId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+
+
+            modelBuilder.Entity<Vendor>()
+                .HasOne(x => x.VendorCategory)
+                .WithMany(x => x.Vendors)
+                .HasForeignKey(x => x.VendorCategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Vendor>()
+                .HasOne(x => x.Company)
+                .WithMany()
+                .HasForeignKey(x => x.CompanyId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Vendor>()
+                .HasOne(x => x.CreatedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.CreatedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Vendor>()
+                .HasOne(x => x.ModifiedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.ModifiedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<PurchaseRequisition>()
+                .HasOne(x => x.Vendor)
+                .WithMany(x => x.PurchaseRequisitions)
+                .HasForeignKey(x => x.VendorId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<PurchaseRequisitionItem>()
+                .HasOne(x => x.PurchaseRequisition)
+                .WithMany(x => x.PurchaseRequisitionItems)
+                .HasForeignKey(x => x.PurchaseRequisitionId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<PurchaseRequisitionItem>()
+                .HasOne(x => x.VendorCategory)
+                .WithMany(x => x.PurchaseRequisitionItems)
+                .HasForeignKey(x => x.CategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<RFQ>()
+                .HasOne(x => x.PurchaseRequisition)
+                .WithMany(x => x.RFQs)
+                .HasForeignKey(x => x.PurchaseRequisitionId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<RFQ>()
+                .HasOne(x => x.Vendor)
+                .WithMany(x => x.RFQs)
+                .HasForeignKey(x => x.VendorId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<RFQVendor>()
+                .HasOne(x => x.RFQ)
+                .WithMany(x => x.RFQVendors)
+                .HasForeignKey(x => x.RFQId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<RFQVendor>()
+                .HasOne(x => x.Vendor)
+                .WithMany(x => x.RFQVendors)
+                .HasForeignKey(x => x.VendorId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Quotation>()
+                .HasOne(x => x.RFQ)
+                .WithMany(x => x.Quotations)
+                .HasForeignKey(x => x.RFQId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Quotation>()
+                .HasOne(x => x.Vendor)
+                .WithMany(x => x.Quotations)
+                .HasForeignKey(x => x.VendorId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<QuotationItem>()
+                .HasOne(x => x.Quotation)
+                .WithMany(x => x.QuotationItems)
+                .HasForeignKey(x => x.QuotationId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<QuotationItem>()
+                .HasOne(x => x.PurchaseRequisitionItem)
+                .WithMany(x => x.QuotationItems)
+                .HasForeignKey(x => x.PRItemId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<VendorSelection>()
+                .HasOne(x => x.RFQ)
+                .WithMany(x => x.VendorSelections)
+                .HasForeignKey(x => x.RFQId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<VendorSelection>()
+                .HasOne(x => x.Quotation)
+                .WithMany(x => x.VendorSelections)
+                .HasForeignKey(x => x.QuotationId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<VendorSelection>()
+                .HasOne(x => x.SelectedVendor)
+                .WithMany(x => x.VendorSelections)
+                .HasForeignKey(x => x.SelectedVendorId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<VendorSelection>()
+                .HasOne(x => x.SelectedByUser)
+                .WithMany()
+                .HasForeignKey(x => x.SelectedBy)
+                .OnDelete(DeleteBehavior.Restrict);
         }
-          modelBuilder.Entity<Vendor>()
-        .HasOne(x => x.VendorCategory)
-        .WithMany(x => x.Vendors)
-        .HasForeignKey(x => x.VendorCategoryId)
-        .OnDelete(DeleteBehavior.Restrict);
-
-    modelBuilder.Entity<Vendor>()
-        .HasOne(x => x.Company)
-        .WithMany()
-        .HasForeignKey(x => x.CompanyId)
-        .OnDelete(DeleteBehavior.Restrict);
-
-    modelBuilder.Entity<Vendor>()
-        .HasOne(x => x.CreatedByUser)
-        .WithMany()
-        .HasForeignKey(x => x.CreatedBy)
-        .OnDelete(DeleteBehavior.Restrict);
-
-    modelBuilder.Entity<Vendor>()
-        .HasOne(x => x.ModifiedByUser)
-        .WithMany()
-        .HasForeignKey(x => x.ModifiedBy)
-        .OnDelete(DeleteBehavior.Restrict);
-
-    modelBuilder.Entity<PurchaseRequisition>()
-        .HasOne(x => x.Vendor)
-        .WithMany(x => x.PurchaseRequisitions)
-        .HasForeignKey(x => x.VendorId)
-        .OnDelete(DeleteBehavior.Restrict);
-
-    modelBuilder.Entity<PurchaseRequisitionItem>()
-        .HasOne(x => x.PurchaseRequisition)
-        .WithMany(x => x.PurchaseRequisitionItems)
-        .HasForeignKey(x => x.PurchaseRequisitionId)
-        .OnDelete(DeleteBehavior.Cascade);
-
-    modelBuilder.Entity<PurchaseRequisitionItem>()
-        .HasOne(x => x.VendorCategory)
-        .WithMany(x => x.PurchaseRequisitionItems)
-        .HasForeignKey(x => x.CategoryId)
-        .OnDelete(DeleteBehavior.Restrict);
-
-    modelBuilder.Entity<RFQ>()
-        .HasOne(x => x.PurchaseRequisition)
-        .WithMany(x => x.RFQs)
-        .HasForeignKey(x => x.PurchaseRequisitionId)
-        .OnDelete(DeleteBehavior.Restrict);
-
-    modelBuilder.Entity<RFQ>()
-        .HasOne(x => x.Vendor)
-        .WithMany(x => x.RFQs)
-        .HasForeignKey(x => x.VendorId)
-        .OnDelete(DeleteBehavior.Restrict);
-
-    modelBuilder.Entity<RFQVendor>()
-        .HasOne(x => x.RFQ)
-        .WithMany(x => x.RFQVendors)
-        .HasForeignKey(x => x.RFQId)
-        .OnDelete(DeleteBehavior.Cascade);
-
-    modelBuilder.Entity<RFQVendor>()
-        .HasOne(x => x.Vendor)
-        .WithMany(x => x.RFQVendors)
-        .HasForeignKey(x => x.VendorId)
-        .OnDelete(DeleteBehavior.Restrict);
-
-    modelBuilder.Entity<Quotation>()
-        .HasOne(x => x.RFQ)
-        .WithMany(x => x.Quotations)
-        .HasForeignKey(x => x.RFQId)
-        .OnDelete(DeleteBehavior.Cascade);
-
-    modelBuilder.Entity<Quotation>()
-        .HasOne(x => x.Vendor)
-        .WithMany(x => x.Quotations)
-        .HasForeignKey(x => x.VendorId)
-        .OnDelete(DeleteBehavior.Restrict);
-
-    modelBuilder.Entity<QuotationItem>()
-        .HasOne(x => x.Quotation)
-        .WithMany(x => x.QuotationItems)
-        .HasForeignKey(x => x.QuotationId)
-        .OnDelete(DeleteBehavior.Cascade);
-
-    modelBuilder.Entity<QuotationItem>()
-        .HasOne(x => x.PurchaseRequisitionItem)
-        .WithMany(x => x.QuotationItems)
-        .HasForeignKey(x => x.PRItemId)
-        .OnDelete(DeleteBehavior.Restrict);
-
-    modelBuilder.Entity<VendorSelection>()
-        .HasOne(x => x.RFQ)
-        .WithMany(x => x.VendorSelections)
-        .HasForeignKey(x => x.RFQId)
-        .OnDelete(DeleteBehavior.Restrict);
-
-    modelBuilder.Entity<VendorSelection>()
-        .HasOne(x => x.Quotation)
-        .WithMany(x => x.VendorSelections)
-        .HasForeignKey(x => x.QuotationId)
-        .OnDelete(DeleteBehavior.Restrict);
-
-    modelBuilder.Entity<VendorSelection>()
-        .HasOne(x => x.SelectedVendor)
-        .WithMany(x => x.VendorSelections)
-        .HasForeignKey(x => x.SelectedVendorId)
-        .OnDelete(DeleteBehavior.Restrict);
-
-    modelBuilder.Entity<VendorSelection>()
-        .HasOne(x => x.SelectedByUser)
-        .WithMany()
-        .HasForeignKey(x => x.SelectedBy)
-        .OnDelete(DeleteBehavior.Restrict);
-}
     }
 }
