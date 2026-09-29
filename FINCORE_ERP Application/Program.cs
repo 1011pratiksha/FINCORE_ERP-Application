@@ -15,6 +15,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     ));
 
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+
+builder.Services.AddScoped<IUserManagementService, UserManagementService>();
 builder.Services.AddSession();
 
 builder.Services.AddScoped<IVendorService,VendorService>();

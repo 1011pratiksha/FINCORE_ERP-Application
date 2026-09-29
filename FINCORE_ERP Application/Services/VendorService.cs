@@ -23,13 +23,14 @@ namespace FINCORE_ERP_Application.Services
             return v;
         }
 
-        public async Task<List<Vendor>> getVendor()
+       
+        public async Task<List<Vendor>> GetVendor()
         {
             var data = await db.Vendors.ToListAsync();
             return data;
         }
 
-        public async Task<Vendor> getVendorById(int id)
+        public async Task<Vendor> GetVendorById(int id)
         {
             var data = await db.Vendors.FindAsync(id);
             return data;
@@ -38,15 +39,29 @@ namespace FINCORE_ERP_Application.Services
         public async Task UpdateVendor(Vendor v)
         {
             var data = await db.Vendors.FindAsync(v.VendorId);
-            db.Vendors.Update(data);
-            await db.SaveChangesAsync();
-        }
 
+            if (data != null)
+            {
+                data.VendorCode = v.VendorCode;
+                data.VendorCategoryId = v.VendorCategoryId;
+                data.BankAccount = v.BankAccount;
+                data.PAN = v.PAN;
+                data.ModifiedAt = DateTime.Now;
+
+                await db.SaveChangesAsync();
+            }
+        }
         public async Task DelVendor(int id)
         {
             var data = await db.Vendors.FindAsync(id);
             db.Vendors.Remove(data);
             await db.SaveChangesAsync();
+
+            if (data != null)
+            {
+                db.Vendors.Remove(data);
+                await db.SaveChangesAsync();
+            }
         }
 
         public async Task<List<VendorCategory>> GetVendorCategories()
@@ -71,9 +86,16 @@ namespace FINCORE_ERP_Application.Services
         public async Task UpdateVendorCategory(VendorCategory category)
         {
             var data = await db.VendorCategories.FindAsync(category.VendorCategoryId);
-            db.VendorCategories.Update(data);
-            await db.SaveChangesAsync();
+         
+            if (data != null)
+            {
+                data.CategoryName = category.CategoryName;
+                data.Description = category.Description;
+                data.IsActive = category.IsActive;
+                data.ModifiedAt = DateTime.Now;
 
+                await db.SaveChangesAsync();
+            }
         }
 
         public async Task DeleteVendorCategory(int id)
@@ -84,6 +106,13 @@ namespace FINCORE_ERP_Application.Services
             data.ModifiedAt = DateTime.Now;
 
             await db.SaveChangesAsync();
+            if (data != null)
+            {
+                data.IsActive = 0;
+                data.ModifiedAt = DateTime.Now;
+
+                await db.SaveChangesAsync();
+            }
         }
 
         public async Task UpdatePerformanceScore(int vendorId, decimal score)
@@ -94,6 +123,14 @@ namespace FINCORE_ERP_Application.Services
             vendor.ModifiedAt = DateTime.Now;
 
             await db.SaveChangesAsync();
+
+            if (vendor != null)
+            {
+                vendor.PerformanceScore = score;
+                vendor.ModifiedAt = DateTime.Now;
+
+                await db.SaveChangesAsync();
+            }
         }
 
         public async Task UpdateVerification(int vendorId, byte verified)
@@ -104,6 +141,13 @@ namespace FINCORE_ERP_Application.Services
             vendor.ModifiedAt = DateTime.Now;
 
             await db.SaveChangesAsync();
+            if (vendor != null)
+            {
+                vendor.IsVerified = verified;
+                vendor.ModifiedAt = DateTime.Now;
+
+                await db.SaveChangesAsync();
+            }
         }
 
         public async Task UpdateStatus(int vendorId, byte status)
@@ -114,6 +158,14 @@ namespace FINCORE_ERP_Application.Services
             vendor.ModifiedAt = DateTime.Now;
 
             await db.SaveChangesAsync();
+            if (vendor != null)
+            {
+                vendor.IsActive = status;
+                vendor.ModifiedAt = DateTime.Now;
+
+                await db.SaveChangesAsync();
+            }
+
         }
 
         public async Task<List<VendorSelection>> GetVendorSelections()
@@ -142,15 +194,16 @@ namespace FINCORE_ERP_Application.Services
             await db.SaveChangesAsync();
         }
 
-        public Task<List<Vendor>> GetVendor()
-        {
-            throw new NotImplementedException();
-        }
+        //public Task<List<Vendor>> GetVendor()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-        public Task<Vendor> GetVendorById(int id)
-        {
-            throw new NotImplementedException();
-        }
+        //public Task<Vendor> GetVendorById(int id)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
+
 
