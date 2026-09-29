@@ -32,6 +32,8 @@ namespace FINCORE_ERP_Application.Models
     
         public List<CapexRequest> capexRequests { get; set; }
 
+        public List<Budget> Budgets { get; set; }
+
 
 
     }

@@ -12,11 +12,10 @@ namespace FINCORE_ERP_Application.Models
         [StringLength(20)]
         public string CategoryName { get; set; }
 
+        public string CategoryCode { get; set; }
 
-        [Required]
-        [ForeignKey("Department")]
-        public int DepartmentId { get; set; }
-        public Department Department { get; set; }
+        public string Description { get; set; }
+
 
         [Required]
         public byte IsActive { get; set; }

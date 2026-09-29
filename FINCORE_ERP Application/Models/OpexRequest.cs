@@ -26,6 +26,8 @@ namespace FINCORE_ERP_Application.Models
         public int RequestedBy { get; set; }
         public User RequestedByUser { get; set; }
 
+        public int IsActive { get; set; }
+
         [Required]
         [StringLength(15)]
         public string ApprovalStatus { get; set; }
@@ -34,7 +36,7 @@ namespace FINCORE_ERP_Application.Models
         public int? ApprovedBy { get; set; }
         public User ApprovedByUser { get; set; }
 
-        public DateTime? ApprovedAt { get; set; }
+        public DateTime? ApprovedDate { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
 
