@@ -36,6 +36,12 @@ namespace FINCORE_ERP_Application.Models
         public int RequestedBy { get; set; }
         public User RequestedByUser { get; set; }
 
+
+        [Required]
+        [ForeignKey("CreatedByUser")]
+        public int CreatedBy { get; set; }
+        public User CreatedByUser { get; set; }
+
         [Required]
         [StringLength(15)]
         public string ApprovalStatus { get; set; }
