@@ -9,5 +9,7 @@ namespace FINCORE_ERP_Application.Interfaces
         Task<List<CapexRequest>> fetchCapexRequests();
 
         Task EditCapexRequest(CapexRequest cr);
+
+        Task<CapexRequest?> GetCapexRequestAsync();
     }
 }
