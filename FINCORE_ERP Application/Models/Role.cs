@@ -14,23 +14,16 @@ namespace FINCORE_ERP_Application.Models
 
         public byte is_active { get; set; }
 
-        [ForeignKey("user_id")]
-
         public int? created_by { get; set; }
 
         public DateTime created_at { get; set; }
 
-
-        [ForeignKey("user_id")]
-
         public int? modified_by { get; set; }
-        public User User { get; set; }
+
         public DateTime? modified_at { get; set; }
 
+        public ICollection<User> Users { get; set; } = new List<User>();
 
-
-        public List<Permissions> Permissions { get; set; }
-
-
+      
     }
 }

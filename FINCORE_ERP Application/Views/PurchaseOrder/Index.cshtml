@@ -1,0 +1,65 @@
+﻿@model List<FINCORE_ERP_Application.Models.PurchaseOrder>
+
+@{
+    ViewData["Title"] = "Purchase Orders";
+}
+
+<h2>Purchase Orders</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create Purchase Order</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>PO ID</th>
+            <th>PO Number</th>
+            <th>Vendor ID</th>
+            <th>Quotation ID</th>
+            <th>Total Amount</th>
+            <th>Status</th>
+            <th>Active</th>
+            <th>Created By</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.PurchaseOrderId</td>
+                <td>@item.PONumber</td>
+                <td>@item.VendorId</td>
+                <td>@item.QuotationId</td>
+                <td>@item.TotalAmount</td>
+                <td>@item.Status</td>
+                <td>@item.IsActive</td>
+                <td>@item.CreatedBy</td>
+                <td>@item.CreatedAt</td>
+
+                <td>
+                    <a asp-action="Details"
+                       asp-route-id="@item.PurchaseOrderId"
+                       class="btn btn-info btn-sm">
+                        Details
+                    </a>
+
+                    <a asp-action="Edit"
+                       asp-route-id="@item.PurchaseOrderId"
+                       class="btn btn-warning btn-sm">
+                        Edit
+                    </a>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@item.PurchaseOrderId"
+                       class="btn btn-danger btn-sm">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

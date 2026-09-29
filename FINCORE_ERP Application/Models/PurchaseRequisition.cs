@@ -16,7 +16,7 @@ namespace FINCORE_ERP_Application.Models
 
         [ForeignKey("CapexRequest")]
         public int? CapexRequestId { get; set; }
-        //public CapexRequest CapexRequest { get; set; }
+        public CapexRequest CapexRequest { get; set; }
 
         [Required]
         [StringLength(255)]
