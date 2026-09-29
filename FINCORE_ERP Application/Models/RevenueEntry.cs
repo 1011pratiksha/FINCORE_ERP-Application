@@ -41,6 +41,7 @@ namespace FINCORE_ERP_Application.Models
         [Required]
         [ForeignKey("AccountMaster")]
         public int AccountId { get; set; }
+        
         public AccountMaster AccountMaster { get; set; }
 
         [Required]

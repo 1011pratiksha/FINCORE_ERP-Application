@@ -54,6 +54,146 @@ namespace FINCORE_ERP_Application.Data
         public DbSet<AssetDisposal> AssetDisposals { get; set; }
         public DbSet<AssetHistory> AssetHistories { get; set; }
 
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // One CAPEX request can be linked with multiple assets
+            modelBuilder.Entity<Asset>()
+                .HasOne(a => a.CapexRequest)
+                .WithMany(c => c.Assets)
+                .HasForeignKey(a => a.CapexRequestId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // One vendor can provide multiple assets
+            modelBuilder.Entity<Asset>()
+                .HasOne(a => a.Vendor)
+                .WithMany(v => v.Assets)
+                .HasForeignKey(a => a.VendorId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // One department can have multiple assets
+            modelBuilder.Entity<Asset>()
+                .HasOne(a => a.Department) 
+
+                .WithMany(d => d.Assets)
+                .HasForeignKey(a => a.DepartmentId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Keep track of all assignments made for an asset
+            modelBuilder.Entity<AssetAssignment>()
+                .HasOne(aa => aa.Asset)
+                .WithMany(a => a.AssetAssignments)
+                .HasForeignKey(aa => aa.AssetId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // An employee can be assigned multiple assets
+            modelBuilder.Entity<AssetAssignment>()
+                .HasOne(aa => aa.Employee)
+                .WithMany()
+                .HasForeignKey(aa => aa.EmployeeId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Store the different locations of an asset
+            modelBuilder.Entity<AssetLocation>()
+                .HasOne(al => al.Asset)
+                .WithMany(a => a.AssetLocations)
+                .HasForeignKey(al => al.AssetId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // An asset can have multiple depreciation records
+            modelBuilder.Entity<AssetDepreciation>()
+                .HasOne(ad => ad.Asset)
+                .WithMany(a => a.AssetDepreciations)
+                .HasForeignKey(ad => ad.AssetId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // An asset can have multiple disposal records as per the current model
+            modelBuilder.Entity<AssetDisposal>()
+                .HasOne(ad => ad.Asset)
+                .WithMany(a => a.AssetDisposals)
+                .HasForeignKey(ad => ad.AssetId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Store the history of changes made to an asset
+            modelBuilder.Entity<AssetHistory>()
+                .HasOne(ah => ah.Asset)
+                .WithMany(a => a.AssetHistories)
+                .HasForeignKey(ah => ah.AssetId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Store which user performed an asset history action
+            modelBuilder.Entity<AssetHistory>()
+                .HasOne(ah => ah.PerformedByUser)
+                .WithMany()
+                .HasForeignKey(ah => ah.PerformedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // A user can be linked with multiple customers
+            modelBuilder.Entity<Customer>()
+                .HasOne(c => c.User)
+                .WithMany()
+                .HasForeignKey(c => c.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // A company can have multiple customers
+            modelBuilder.Entity<Customer>()
+                .HasOne(c => c.Company)
+                .WithMany()
+                .HasForeignKey(c => c.CompanyId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // A customer can have multiple revenue entries
+            modelBuilder.Entity<RevenueEntry>()
+                .HasOne(r => r.Customer)
+                .WithMany(c => c.RevenueEntries)
+                .HasForeignKey(r => r.CustomerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // A department can have multiple revenue entries
+            modelBuilder.Entity<RevenueEntry>()
+                .HasOne(r => r.Department)
+                .WithMany()
+                .HasForeignKey(r => r.DepartmentId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // One account can be used for multiple revenue entries
+            modelBuilder.Entity<RevenueEntry>()
+                .HasOne(r => r.AccountMaster)
+                .WithMany()
+                .HasForeignKey(r => r.AccountId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Store the user who created the revenue entry
+            modelBuilder.Entity<RevenueEntry>()
+                .HasOne(r => r.CreatedByUser)
+                .WithMany()
+                .HasForeignKey(r => r.CreatedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Store the user who last modified the revenue entry
+            modelBuilder.Entity<RevenueEntry>()
+                .HasOne(r => r.ModifiedByUser)
+                .WithMany()
+                .HasForeignKey(r => r.ModifiedBy)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // A customer can have multiple AR invoices
+            modelBuilder.Entity<ARInvoice>()
+                .HasOne(ar => ar.Customer)
+                .WithMany(c => c.ARInvoices)
+                .HasForeignKey(ar => ar.CustomerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // A revenue entry can be linked with multiple AR invoices
+            modelBuilder.Entity<ARInvoice>()
+                .HasOne(ar => ar.RevenueEntry)
+                .WithMany(r => r.ARInvoices)
+                .HasForeignKey(ar => ar.RevenueEntryId)
+                .OnDelete(DeleteBehavior.Restrict);
+        }
+
     }
 }
 

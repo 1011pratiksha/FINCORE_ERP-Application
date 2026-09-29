@@ -57,7 +57,7 @@ namespace FINCORE_ERP_Application.Models
         public List<Quotation> Quotations { get; set; }
         public List<VendorSelection> VendorSelections { get; set; }
         //public List<GRN> GRNs { get; set; }
-        //public List<Asset> Assets { get; set; }
+        public List<Asset> Assets { get; set; }
         //public List<WorkOrder> WorkOrders { get; set; }
         //public List<APInvoice> APInvoices { get; set; }
         //public List<Payment> Payments { get; set; }
