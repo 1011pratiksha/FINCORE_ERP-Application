@@ -9,7 +9,6 @@ namespace FINCORE_ERP_Application.Models
         public int POItemId { get; set; }
 
         [Required]
-        [ForeignKey("PurchaseOrder")]
         public int PurchaseOrderId { get; set; }
 
         public PurchaseOrder PurchaseOrder { get; set; }

@@ -59,15 +59,17 @@ namespace FINCORE_ERP_Application.Data
         public DbSet<Budget> Budgets { get; set; }
 
         public DbSet<BudgetLine> BudgetLines { get; set; }
-        
+
+       
+
 
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            
-            
+
+
 
             modelBuilder.Entity<User>()
                 .HasOne(u => u.role)
@@ -144,7 +146,7 @@ namespace FINCORE_ERP_Application.Data
                 .OnDelete(DeleteBehavior.Restrict);
 
 
-           
+
 
             modelBuilder.Entity<CostCenter>()
                 .HasOne(c => c.company)
@@ -209,14 +211,14 @@ namespace FINCORE_ERP_Application.Data
 
 
 
-          
+
             modelBuilder.Entity<ApprovalLog>()
                 .HasOne(a => a.WorkOrder)
                 .WithMany()
                 .HasForeignKey(a => a.WorkOrderId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            
+
 
             modelBuilder.Entity<ApprovalLog>()
                 .HasOne(a => a.ApproverUser)
@@ -236,7 +238,7 @@ namespace FINCORE_ERP_Application.Data
                 .HasForeignKey(a => a.modified_by)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            
+
 
             // One Vendor has many APInvoices
             modelBuilder.Entity<APInvoice>()
@@ -370,6 +372,7 @@ namespace FINCORE_ERP_Application.Data
         .HasForeignKey(x => x.CapexRequestId)
         .OnDelete(DeleteBehavior.Restrict);
     });
+        }
           modelBuilder.Entity<Vendor>()
         .HasOne(x => x.VendorCategory)
         .WithMany(x => x.Vendors)
