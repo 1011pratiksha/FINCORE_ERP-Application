@@ -8,6 +8,16 @@ namespace FINCORE_ERP_Application.Models
         [Key]
         public int BudgetId { get; set; }
 
+        [ForeignKey("Company")]
+        public int CompanyID { get; set; }
+
+        public Company Company { get; set; }
+
+        [ForeignKey("department")]
+        public int DepartmentId { get; set; }
+
+        public Department department { get; set; }
+
         [Required]
         [StringLength(20)]
         public string BudgetCode { get; set; }
@@ -38,6 +48,12 @@ namespace FINCORE_ERP_Application.Models
         public int ModifiedBy { get; set; }
 
         public User ModifiedByUser { get; set; }
+
+        [ForeignKey("ApprovedByUser")]
+        public int? ApprovedBy { get; set; }
+        public User ApprovedByUser { get; set; }
+
+        public DateTime? ApprovedAt { get; set; }
 
         public List<BudgetLine> BudgetLines { get; set; }
 

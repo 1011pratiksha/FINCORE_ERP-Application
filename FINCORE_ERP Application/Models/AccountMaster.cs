@@ -6,7 +6,7 @@ namespace FINCORE_ERP_Application.Models
     public class AccountMaster
     {
         [Key]
-        public int AccountId { get; set; }
+        public int AccountMasterId { get; set; }
 
         [Required]
         [StringLength(30)]

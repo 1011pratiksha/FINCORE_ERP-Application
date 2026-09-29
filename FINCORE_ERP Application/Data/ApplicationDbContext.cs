@@ -537,6 +537,19 @@ namespace FINCORE_ERP_Application.Data
         .HasForeignKey(x => x.CapexRequestId)
         .OnDelete(DeleteBehavior.Restrict);
     });
+
+            modelBuilder.Entity<Budget>(u =>
+            {
+                u.HasOne(x => x.Company)
+                .WithMany(x => x.Budgets)
+                .HasForeignKey(x => x.CompanyID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+                u.HasOne(x => x.department)
+                .WithMany(x => x.Budgets)
+                .HasForeignKey(x => x.BudgetId)
+                .OnDelete(DeleteBehavior.Restrict);
+            });
 }
     }
 }

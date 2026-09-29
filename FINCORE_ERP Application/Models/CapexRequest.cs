@@ -19,6 +19,8 @@ namespace FINCORE_ERP_Application.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal Amount { get; set; }
 
+        public int IsActive { get; set; }
+
         [Required]
         [ForeignKey("Department")]
         public int DepartmentId { get; set; }

@@ -22,8 +22,8 @@ namespace FINCORE_ERP_Application.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal AllocatedAmount { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
-        public decimal? UtilizedAmount { get; set; }
+        //[Column(TypeName = "decimal(18,2)")]
+        //public decimal? UtilizedAmount { get; set; }
 
         [Required]
         public byte IsActive { get; set; }

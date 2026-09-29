@@ -45,5 +45,7 @@ namespace FINCORE_ERP_Application.Models
 
         //navigation property
         public List<Branches> Branches { get; set; }
+
+        public List<Budget> Budgets { get; set; }
     }
 }

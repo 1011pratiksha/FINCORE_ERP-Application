@@ -16,6 +16,8 @@ namespace FINCORE_ERP_Application.Models
         [StringLength(200)]
         public string Description { get; set; }
 
+        public string BillFilePath {  get; set; }
+
         [Required]
         [ForeignKey("OpexRequest")]
         public int OpexRequestId { get; set; }
@@ -26,6 +28,8 @@ namespace FINCORE_ERP_Application.Models
 
         [Required]
         public string ExpenseType { get; set; }
+
+        public int IsActive { get; set; }
 
         [Required]
         [Column(TypeName = "decimal(18,2)")]
@@ -40,12 +44,24 @@ namespace FINCORE_ERP_Application.Models
         [StringLength(30)]
         public string ApprovalStatus { get; set; }
 
+        public DateTime? ApprovedAt { get; set; }
+
         public DateTime? CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
 
         [ForeignKey("ApprovedByUser")]
         public int? ApprovedBy { get; set; }
         public User ApprovedByUser { get; set; }
+
+        [Required]
+        [ForeignKey("CreatedByUser")]
+        public int CreatedBy { get; set; }
+        public User CreatedByUser { get; set; }
+
+        [Required]
+        [ForeignKey("ModifiedByUser")]
+        public int ModifiedBy { get; set; }
+        public User ModifiedByUser { get; set; }
 
         public List<CostCenter> costCenters { get; set; } 
     }
