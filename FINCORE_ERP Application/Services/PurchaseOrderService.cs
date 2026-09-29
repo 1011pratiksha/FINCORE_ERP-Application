@@ -23,7 +23,6 @@ namespace FINCORE_ERP_Application.Services
         public async Task DeletePurchaseOrder(int id)
         {
             var data = await db.PurchaseOrders.FindAsync(id);
-
             if (data != null)
             {
                 db.PurchaseOrders.Remove(data);
@@ -34,14 +33,12 @@ namespace FINCORE_ERP_Application.Services
         public async Task<List<PurchaseOrder>> GetAllPurchaseOrders()
         {
             var data = await db.PurchaseOrders.ToListAsync();
-
             return data;
         }
 
         public async Task<PurchaseOrder> GetPurchaseOrderById(int id)
         {
             var data = await db.PurchaseOrders.FindAsync(id);
-
             return data;
         }
 
